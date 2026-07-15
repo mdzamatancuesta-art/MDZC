@@ -467,6 +467,51 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 .cv-dots i{ width:12px; height:12px; border-radius:50%; border:2px solid var(--ink); background:transparent; }
 .cv-dots i.on{ background:var(--sol); }
 .cv-sec .cv-box{ margin-top:30px; }
+/* iconos-monograma de las herramientas */
+.cv-chips span{ display:inline-flex; align-items:center; gap:7px; padding:4px 11px 4px 5px; }
+.cv-chips .ic{ width:23px; height:23px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:10px; letter-spacing:-.03em; flex:0 0 auto; }
+.cv-chips.c-sol .ic{ background:var(--sol); color:#241C15; }
+.cv-chips.c-ciruela .ic{ background:var(--ciruela); color:#FBF3E4; }
+.cv-chips.c-melon .ic{ background:var(--melon); color:#241C15; }
+.cv-chips.c-gold .ic{ background:#E0A93B; color:#241C15; }
+.cv-chips.c-brown .ic{ background:#5a3d28; color:#FBF3E4; }
+
+/* ============ SERVICIOS — ETIQUETAS COLGANTES ============ */
+#servicios .price-grid{ grid-template-columns:repeat(auto-fill,minmax(224px,1fr)); gap:30px 18px; padding-top:16px; }
+#servicios .price-card{
+  background:var(--card); border:2.5px solid var(--ink); border-radius:8px 8px 16px 16px;
+  padding:34px 20px 20px; overflow:visible;
+  box-shadow:0 13px 24px -15px rgba(36,28,21,.45);
+}
+#servicios .price-card::before{
+  content:""; position:absolute; top:10px; left:50%; transform:translateX(-50%); width:15px; height:15px;
+  border-radius:50%; background:var(--paper); border:2.5px solid var(--ink);
+}
+#servicios .price-card:nth-child(3n+1){ transform:rotate(-1.2deg); }
+#servicios .price-card:nth-child(3n+2){ transform:rotate(.9deg); }
+#servicios .price-card:nth-child(3n){ transform:rotate(-.5deg); }
+#servicios .price-card:hover{ transform:rotate(0deg) translateY(-6px); box-shadow:0 22px 34px -16px rgba(36,28,21,.45); }
+#servicios .price-card .price-ico{
+  width:36px; height:36px; border-radius:50%; border:2.5px solid var(--ink);
+  display:flex; align-items:center; justify-content:center; margin-bottom:13px;
+}
+#servicios .price-card .price-ico svg{ width:19px; height:19px; }
+#servicios .price-card:nth-child(6n+1) .price-ico{ background:var(--sol-soft); }
+#servicios .price-card:nth-child(6n+2) .price-ico{ background:var(--melon-soft); }
+#servicios .price-card:nth-child(6n+3) .price-ico{ background:var(--ciruela-soft); }
+#servicios .price-card:nth-child(6n+4) .price-ico{ background:var(--sol-soft); }
+#servicios .price-card:nth-child(6n+5) .price-ico{ background:var(--melon-soft); }
+#servicios .price-card:nth-child(6n+6) .price-ico{ background:var(--ciruela-soft); }
+#servicios .price-card h4{ padding-right:0; }
+#servicios .price-card .price{
+  position:absolute; top:24px; right:16px; left:auto;
+  font-family:'Space Mono',monospace; font-size:.78rem; font-weight:700; color:var(--ink);
+  background:var(--sol-soft); border:2px dashed var(--ink); border-radius:7px; padding:3px 9px;
+  transform:rotate(-4deg); text-transform:uppercase; letter-spacing:.02em;
+}
+#servicios .price-card h4{ margin-top:6px; padding-right:64px; }
+#servicios .serv-group-head h3{ position:relative; display:inline-block; }
+#servicios .serv-group-head h3::after{ content:""; position:absolute; left:0; right:0; bottom:-6px; height:5px; background:var(--sol-soft); border-radius:3px; transform:rotate(-.5deg); z-index:-1; }
 </style>
 </head>
 <body>
@@ -1031,23 +1076,23 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 
             <div class="cv-skillcat">
               <div class="cv-skillcat-t"><span class="d" style="background:var(--sol);"></span><span class="es">Diseño y maquetación</span><span class="en">Design &amp; layout</span></div>
-              <div class="cv-chips"><span>Illustrator</span><span>Photoshop</span><span>InDesign</span><span>Acrobat Pro</span><span>Lightroom</span></div>
+              <div class="cv-chips c-sol"><span><i class="ic">Ai</i>Illustrator</span><span><i class="ic">Ps</i>Photoshop</span><span><i class="ic">Id</i>InDesign</span><span><i class="ic">Ac</i>Acrobat Pro</span><span><i class="ic">Lr</i>Lightroom</span></div>
             </div>
             <div class="cv-skillcat">
               <div class="cv-skillcat-t"><span class="d" style="background:var(--ciruela);"></span><span class="es">3D y producto</span><span class="en">3D &amp; product</span></div>
-              <div class="cv-chips"><span>Rhinoceros</span><span>KeyShot</span><span>ZBrush</span><span>Blender</span></div>
+              <div class="cv-chips c-ciruela"><span><i class="ic">Rh</i>Rhinoceros</span><span><i class="ic">Ks</i>KeyShot</span><span><i class="ic">Zb</i>ZBrush</span><span><i class="ic">Bl</i>Blender</span></div>
             </div>
             <div class="cv-skillcat">
               <div class="cv-skillcat-t"><span class="d" style="background:var(--melon);"></span><span class="es">Web y digital</span><span class="en">Web &amp; digital</span></div>
-              <div class="cv-chips"><span>Figma</span><span>WordPress</span><span>HTML</span><span>Canva</span></div>
+              <div class="cv-chips c-melon"><span><i class="ic">Fi</i>Figma</span><span><i class="ic">Wp</i>WordPress</span><span><i class="ic">&lt;/&gt;</i>HTML</span><span><i class="ic">Cv</i>Canva</span></div>
             </div>
             <div class="cv-skillcat">
               <div class="cv-skillcat-t"><span class="d" style="background:#E0A93B;"></span><span class="es">Vídeo y motion</span><span class="en">Video &amp; motion</span></div>
-              <div class="cv-chips"><span>Premiere</span><span>Animate</span><span>Filmora</span><span>GIMP</span></div>
+              <div class="cv-chips c-gold"><span><i class="ic">Pr</i>Premiere</span><span><i class="ic">An</i>Animate</span><span><i class="ic">Fl</i>Filmora</span><span><i class="ic">Gi</i>GIMP</span></div>
             </div>
             <div class="cv-skillcat">
               <div class="cv-skillcat-t"><span class="d" style="background:#5a3d28;"></span><span class="es">Ofimática</span><span class="en">Office</span></div>
-              <div class="cv-chips"><span>Microsoft Office</span><span>Google Workspace</span></div>
+              <div class="cv-chips c-brown"><span><i class="ic">O</i>Microsoft Office</span><span><i class="ic">G</i>Google Workspace</span></div>
             </div>
 
             <h3 class="cv-h h2"><span class="es">Idiomas</span><span class="en">Languages</span></h3>
@@ -1363,6 +1408,35 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
     const end = () => { down = false; tlLine.classList.remove('dragging'); };
     tlLine.addEventListener('pointerup', end);
     tlLine.addEventListener('pointercancel', end);
+  })();
+
+  /* iconos de servicios (etiquetas) según el nombre */
+  (function(){
+    const icons = {
+      paquete:'<rect x="4" y="9" width="16" height="11" rx="1"/><path d="M4 13h16M12 9v11"/><path d="M9 9C7 9 6.2 5.5 9 5c1.8-.3 3 4 3 4M15 9c2 0 2.8-3.5 0-4-1.8-.3-3 4-3 4"/>',
+      digital:'<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/>',
+      cartel:'<path d="M12 3v18M8 21h8M5 6h11l3 3-3 3H5z"/>',
+      boda:'<circle cx="9" cy="14" r="4.5"/><circle cx="15" cy="10" r="4.5"/>',
+      comun:'<path d="M4 15c6 2 10-2 12-8 2 4 1.5 8-2 10-4 2-8 1-10-2z"/>',
+      cumple:'<path d="M4 21h16M5 21v-6h14v6M6 15v-3h12v3M12 12V8M12 6.5V5"/>',
+      tarjeta:'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M6 10h4M6 14h8"/>',
+      identidad:'<circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/>',
+      logo:'<path d="M12 3s6 5 6 11a6 6 0 0 1-12 0c0-6 6-11 6-11z"/>',
+      folleto:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/>',
+      redes:'<path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7A8.4 8.4 0 1 1 21 11.5z"/>',
+      web:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M6.5 6.5h.01M9.5 6.5h.01"/>'
+    };
+    const star = '<path d="M12 3l2.4 6.1L21 9.6l-5 4.3 1.6 6.6L12 17l-5.6 3.5L8 13.9l-5-4.3 6.6-.5z"/>';
+    document.querySelectorAll('#servicios .price-card').forEach(card => {
+      const h4 = card.querySelector('h4');
+      const t = (h4 ? h4.textContent : '').toLowerCase();
+      let d = star;
+      for(const k in icons){ if(t.indexOf(k) !== -1){ d = icons[k]; break; } }
+      const ico = document.createElement('div');
+      ico.className = 'price-ico';
+      ico.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#241C15" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">' + d + '</svg>';
+      card.insertBefore(ico, card.firstChild);
+    });
   })();
 </script>
 
