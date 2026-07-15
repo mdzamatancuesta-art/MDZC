@@ -423,6 +423,50 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 .timeline-line::-webkit-scrollbar, #workGrid.shelf::-webkit-scrollbar{ height:8px; }
 .timeline-line::-webkit-scrollbar-thumb, #workGrid.shelf::-webkit-scrollbar-thumb{ background:rgba(36,28,21,.3); border-radius:8px; }
 @media (prefers-reduced-motion: reduce){ #workGrid.shelf .card, .timeline-line{ scroll-behavior:auto; } }
+
+/* ============ CV — VISUALIZACIÓN COMPLETA ============ */
+.cv-sec .sec-title{ margin-bottom:26px; }
+.cv-stats{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:32px; }
+@media(min-width:660px){ .cv-stats{ grid-template-columns:repeat(5,1fr); } }
+.cv-stat{ background:var(--card); border:2.5px solid var(--ink); border-radius:18px; padding:18px 12px; text-align:center; transition:transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s; }
+.cv-stat:nth-child(odd){ transform:rotate(-1.4deg); } .cv-stat:nth-child(even){ transform:rotate(1.4deg); }
+.cv-stat:hover{ transform:rotate(0deg) translateY(-5px); box-shadow:0 14px 26px -12px rgba(36,28,21,.35); }
+.cv-stat-num{ display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(1.7rem,4.4vw,2.4rem); color:var(--ciruela); line-height:1; }
+.cv-stat:nth-child(3n) .cv-stat-num{ color:var(--melon); }
+.cv-stat:nth-child(3n+1) .cv-stat-num{ color:var(--sol); }
+.cv-stat-lbl{ display:block; font-family:'Space Mono',monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:.02em; margin-top:8px; opacity:.75; }
+.cv-grid{ display:grid; grid-template-columns:1fr; gap:22px; }
+@media(min-width:920px){ .cv-grid{ grid-template-columns:1fr 1fr; align-items:start; } }
+.cv-panel{ background:var(--card); border:2.5px solid var(--ink); border-radius:22px; padding:24px 22px; }
+.cv-panel:nth-child(1){ transform:rotate(-.4deg); } .cv-panel:nth-child(2){ transform:rotate(.4deg); }
+.cv-h{ font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:1.12rem; margin:0 0 14px; display:flex; align-items:center; gap:9px; }
+.cv-h::before{ content:""; width:14px; height:14px; border-radius:4px; background:var(--sol); border:2px solid var(--ink); transform:rotate(12deg); flex:0 0 auto; }
+.cv-h.h2::before{ background:var(--melon); } .cv-h.h3::before{ background:var(--ciruela); }
+* + .cv-h{ margin-top:26px; }
+.cv-skillcat{ margin-bottom:15px; }
+.cv-skillcat-t{ font-family:'Space Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.03em; margin-bottom:8px; opacity:.9; display:flex; align-items:center; gap:7px; }
+.cv-skillcat-t .d{ width:11px; height:11px; border-radius:50%; border:1.5px solid var(--ink); flex:0 0 auto; }
+.cv-chips{ display:flex; flex-wrap:wrap; gap:6px; }
+.cv-chips span{ font-size:12.5px; background:var(--paper); border:2px solid var(--ink); border-radius:14px; padding:4px 11px; transition:transform .2s, background .2s; }
+.cv-chips span:hover{ transform:translateY(-2px) rotate(-2deg); background:var(--sol-soft); }
+.cv-list{ list-style:none; }
+.cv-list li{ position:relative; padding:0 0 15px 16px; }
+.cv-list li::before{ content:""; position:absolute; left:0; top:8px; width:7px; height:7px; border-radius:50%; background:var(--melon); }
+.cv-list li:last-child{ padding-bottom:0; }
+.cv-yr{ font-family:'Space Mono',monospace; font-size:10px; font-weight:700; background:var(--ink); color:var(--paper); padding:1px 7px; border-radius:5px; margin-right:7px; white-space:nowrap; }
+.cv-role{ font-weight:700; font-size:14.5px; }
+.cv-org{ display:block; font-size:12.5px; opacity:.7; margin-top:1px; }
+.cv-award{ display:flex; gap:11px; align-items:flex-start; padding:11px 0; border-bottom:2px dashed var(--line); }
+.cv-award:last-child{ border-bottom:none; }
+.cv-award .ic{ font-size:1.5rem; line-height:1; }
+.cv-award .t{ font-size:13.5px; line-height:1.4; }
+.cv-langs{ display:flex; flex-wrap:wrap; gap:22px; }
+.cv-lang-n{ font-weight:700; font-size:14px; margin-bottom:6px; }
+.cv-lang-n small{ font-family:'Space Mono',monospace; font-weight:400; font-size:10px; opacity:.65; text-transform:uppercase; margin-left:6px; }
+.cv-dots{ display:flex; gap:5px; }
+.cv-dots i{ width:12px; height:12px; border-radius:50%; border:2px solid var(--ink); background:transparent; }
+.cv-dots i.on{ background:var(--sol); }
+.cv-sec .cv-box{ margin-top:30px; }
 </style>
 </head>
 <body>
@@ -502,6 +546,23 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
       </div>
     </div>
 
+    <div class="marquee">
+      <div class="marquee-track mono">
+        <span>Escenografía</span><span class="star">✦</span>
+        <span>Branding</span><span class="star">✦</span>
+        <span>Editorial</span><span class="star">✦</span>
+        <span>Web</span><span class="star">✦</span>
+        <span>Redes</span><span class="star">✦</span>
+        <span>Envases</span><span class="star">✦</span>
+        <span>Escenografía</span><span class="star">✦</span>
+        <span>Branding</span><span class="star">✦</span>
+        <span>Editorial</span><span class="star">✦</span>
+        <span>Web</span><span class="star">✦</span>
+        <span>Redes</span><span class="star">✦</span>
+        <span>Envases</span><span class="star">✦</span>
+      </div>
+    </div>
+
     <div class="services-block sec-block">
       <div class="eyebrow"><span class="es">Servicios</span><span class="en">Services</span></div>
       <h2 class="sec-title"><span class="es">¿Qué necesita <span class="signature">tu marca?</span></span><span class="en">What does <span class="signature">your brand</span> need?</span></h2>
@@ -550,22 +611,6 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
       </div>
     </div>
 
-    <div class="marquee">
-      <div class="marquee-track mono">
-        <span>Escenografía</span><span class="star">✦</span>
-        <span>Branding</span><span class="star">✦</span>
-        <span>Editorial</span><span class="star">✦</span>
-        <span>Web</span><span class="star">✦</span>
-        <span>Redes</span><span class="star">✦</span>
-        <span>Envases</span><span class="star">✦</span>
-        <span>Escenografía</span><span class="star">✦</span>
-        <span>Branding</span><span class="star">✦</span>
-        <span>Editorial</span><span class="star">✦</span>
-        <span>Web</span><span class="star">✦</span>
-        <span>Redes</span><span class="star">✦</span>
-        <span>Envases</span><span class="star">✦</span>
-      </div>
-    </div>
   </section>
 
   <!-- ============ SOBRE MÍ ============ -->
@@ -969,6 +1014,84 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
     <div class="sec-block cv-sec">
       <div style="padding:40px 24px;">
         <div class="eyebrow">CV</div>
+        <h2 class="sec-title"><span class="es">Todo lo que <span class="signature">sé hacer.</span></span><span class="en">Everything I <span class="signature">can do.</span></span></h2>
+
+        <div class="cv-stats">
+          <div class="cv-stat"><span class="cv-stat-num">6</span><span class="cv-stat-lbl es">empresas</span><span class="cv-stat-lbl en">companies</span></div>
+          <div class="cv-stat"><span class="cv-stat-num">19</span><span class="cv-stat-lbl es">programas</span><span class="cv-stat-lbl en">tools</span></div>
+          <div class="cv-stat"><span class="cv-stat-num">6</span><span class="cv-stat-lbl es">disciplinas</span><span class="cv-stat-lbl en">disciplines</span></div>
+          <div class="cv-stat"><span class="cv-stat-num">2</span><span class="cv-stat-lbl es">premios</span><span class="cv-stat-lbl en">awards</span></div>
+          <div class="cv-stat"><span class="cv-stat-num">2</span><span class="cv-stat-lbl es">idiomas</span><span class="cv-stat-lbl en">languages</span></div>
+        </div>
+
+        <div class="cv-grid">
+
+          <div class="cv-panel">
+            <h3 class="cv-h"><span class="es">Herramientas</span><span class="en">Toolkit</span></h3>
+
+            <div class="cv-skillcat">
+              <div class="cv-skillcat-t"><span class="d" style="background:var(--sol);"></span><span class="es">Diseño y maquetación</span><span class="en">Design &amp; layout</span></div>
+              <div class="cv-chips"><span>Illustrator</span><span>Photoshop</span><span>InDesign</span><span>Acrobat Pro</span><span>Lightroom</span></div>
+            </div>
+            <div class="cv-skillcat">
+              <div class="cv-skillcat-t"><span class="d" style="background:var(--ciruela);"></span><span class="es">3D y producto</span><span class="en">3D &amp; product</span></div>
+              <div class="cv-chips"><span>Rhinoceros</span><span>KeyShot</span><span>ZBrush</span><span>Blender</span></div>
+            </div>
+            <div class="cv-skillcat">
+              <div class="cv-skillcat-t"><span class="d" style="background:var(--melon);"></span><span class="es">Web y digital</span><span class="en">Web &amp; digital</span></div>
+              <div class="cv-chips"><span>Figma</span><span>WordPress</span><span>HTML</span><span>Canva</span></div>
+            </div>
+            <div class="cv-skillcat">
+              <div class="cv-skillcat-t"><span class="d" style="background:#E0A93B;"></span><span class="es">Vídeo y motion</span><span class="en">Video &amp; motion</span></div>
+              <div class="cv-chips"><span>Premiere</span><span>Animate</span><span>Filmora</span><span>GIMP</span></div>
+            </div>
+            <div class="cv-skillcat">
+              <div class="cv-skillcat-t"><span class="d" style="background:#5a3d28;"></span><span class="es">Ofimática</span><span class="en">Office</span></div>
+              <div class="cv-chips"><span>Microsoft Office</span><span>Google Workspace</span></div>
+            </div>
+
+            <h3 class="cv-h h2"><span class="es">Idiomas</span><span class="en">Languages</span></h3>
+            <div class="cv-langs">
+              <div class="cv-lang">
+                <div class="cv-lang-n">Español <small class="es">nativo</small><small class="en">native</small></div>
+                <div class="cv-dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+              </div>
+              <div class="cv-lang">
+                <div class="cv-lang-n">English <small class="es">profesional</small><small class="en">professional</small></div>
+                <div class="cv-dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cv-panel">
+            <h3 class="cv-h"><span class="es">Experiencia</span><span class="en">Experience</span></h3>
+            <ul class="cv-list">
+              <li><span class="cv-yr">Dic 2024—<span class="es">hoy</span><span class="en">now</span></span><span class="cv-role"><span class="es">Diseñadora gráfica</span><span class="en">Graphic designer</span></span><span class="cv-org">Alzará Grupo de Comunicación</span></li>
+              <li><span class="cv-yr">2022—2025</span><span class="cv-role"><span class="es">Diseñadora gráfica y técnica de marketing</span><span class="en">Graphic designer &amp; marketing technician</span></span><span class="cv-org">Star1Rocket</span></li>
+              <li><span class="cv-yr">2021—2022</span><span class="cv-role"><span class="es">Auxiliar de diseño</span><span class="en">Design assistant</span></span><span class="cv-org">C&amp;CH · Más que un Caramelo</span></li>
+              <li><span class="cv-yr">2021</span><span class="cv-role"><span class="es">Diseñadora</span><span class="en">Designer</span></span><span class="cv-org">Labotec Games</span></li>
+              <li><span class="cv-yr">2020—2022</span><span class="cv-role"><span class="es">Redes sociales (freelance)</span><span class="en">Social media (freelance)</span></span><span class="cv-org"><span class="es">Varios negocios locales</span><span class="en">Several local businesses</span></span></li>
+              <li><span class="cv-yr">2018—2020</span><span class="cv-role"><span class="es">Prácticas · diseño y redes</span><span class="en">Internship · design &amp; social</span></span><span class="cv-org">Consulta Franquicias · <span class="es">logo IFCA</span><span class="en">IFCA logo</span></span></li>
+              <li><span class="cv-yr">2018</span><span class="cv-role"><span class="es">Prácticas · marketing</span><span class="en">Internship · marketing</span></span><span class="cv-org">Caser Seguros</span></li>
+              <li><span class="cv-yr">2018 & 2020</span><span class="cv-role"><span class="es">Organización</span><span class="en">Organiser</span></span><span class="cv-org"><span class="es">Evento de arte urbano MOS</span><span class="en">MOS urban art event</span></span></li>
+            </ul>
+
+            <h3 class="cv-h h3"><span class="es">Formación</span><span class="en">Education</span></h3>
+            <ul class="cv-list">
+              <li><span class="cv-yr">2018—2020</span><span class="cv-role"><span class="es">G.S. Marketing y Publicidad</span><span class="en">Higher Degree · Marketing &amp; Advertising</span></span><span class="cv-org">Colegio Ntra. Sra. del Pilar</span></li>
+              <li><span class="cv-yr">2016—2018</span><span class="cv-role"><span class="es">G.S. Diseño y Edición de Publicaciones Impresas y Multimedia</span><span class="en">Higher Degree · Print &amp; Multimedia Publication Design</span></span><span class="cv-org">La Salle Sagrado Corazón</span></li>
+              <li><span class="cv-yr">2013—2015</span><span class="cv-role"><span class="es">G.M. Preimpresión Digital</span><span class="en">Mid Degree · Digital Prepress</span></span><span class="cv-org">La Salle Sagrado Corazón</span></li>
+              <li><span class="cv-yr">2009—2013</span><span class="cv-role"><span class="es">Graduado en ESO</span><span class="en">Secondary education</span></span><span class="cv-org">IES Príncipe Felipe</span></li>
+              <li><span class="cv-yr">2022</span><span class="cv-role">Data Security Protection Officer (DSPO)</span></li>
+            </ul>
+
+            <h3 class="cv-h h2"><span class="es">Premios</span><span class="en">Awards</span></h3>
+            <div class="cv-award"><span class="ic">🏆</span><span class="t"><b>2018</b> · <span class="es">1er premio — V CreaMadrid, La Salle Innovación Empresarial</span><span class="en">1st prize — V CreaMadrid, La Salle Business Innovation</span></span></div>
+            <div class="cv-award"><span class="ic">🎽</span><span class="t"><b>2022</b> · <span class="es">Semifinalista y mención especial — Concurso Nacional "Artistas en Camiseta"</span><span class="en">Semifinalist &amp; special mention — National "Artistas en Camiseta" contest</span></span></div>
+          </div>
+
+        </div>
+
         <div class="cv-box">
           <span class="cv-star signature">★ pssst</span>
           <h2><span class="es">Trayectoria completa,<br>en un PDF.</span><span class="en">Full experience,<br>in one PDF.</span></h2>
