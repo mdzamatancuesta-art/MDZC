@@ -316,6 +316,38 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 #dock a.current{ opacity:1; background:rgba(255,255,255,0.15); transform:scale(1.1); }
 #dock a svg{ width:19px; height:19px; }
 @media (min-width:820px){ #dock{ display:none; } }
+
+/* ============ TARJETAS CLICABLES + PANTALLA DE PROYECTO ============ */
+.grid-work .card{ cursor:pointer; }
+.grid-work .card::after{
+  content:"↗"; position:absolute; bottom:12px; right:14px;
+  width:36px; height:36px; border-radius:50%; background:var(--ink); color:var(--paper);
+  display:flex; align-items:center; justify-content:center; font-family:'Space Mono',monospace; font-size:16px;
+  opacity:0; transform:scale(.5) rotate(-30deg); transition:opacity .3s, transform .35s cubic-bezier(.34,1.56,.64,1);
+  z-index:3; pointer-events:none;
+}
+.grid-work .card:hover::after, .grid-work .card:focus-visible::after{ opacity:1; transform:scale(1) rotate(0deg); }
+
+#project-modal{ position:fixed; inset:0; z-index:150; display:flex; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .35s ease, visibility .35s ease; }
+#project-modal.open{ opacity:1; visibility:visible; pointer-events:auto; }
+.pm-backdrop{ position:absolute; inset:0; background:rgba(36,28,21,0.55); -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); }
+.pm-sheet{ position:relative; z-index:1; margin:auto; width:min(940px,94vw); max-height:92vh; overflow:auto; background:var(--paper); border:3px solid var(--ink); border-radius:26px; box-shadow:0 40px 80px -20px rgba(36,28,21,.5); transform:translateY(46px) scale(.96); transition:transform .45s cubic-bezier(.22,1,.36,1); }
+#project-modal.open .pm-sheet{ transform:translateY(0) scale(1); }
+.pm-hero{ position:relative; height:min(46vh,340px); overflow:hidden; border-bottom:3px solid var(--ink); background:var(--sol-soft); }
+.pm-hero .pm-img{ width:100%; height:100%; object-fit:cover; filter:saturate(1.05); }
+.pm-noimg{ display:flex; align-items:center; justify-content:center; height:100%; font-family:'Caveat',cursive; font-size:2.4rem; color:var(--ink); opacity:.5; letter-spacing:.05em; }
+.pm-year{ position:absolute; z-index:3; top:16px; left:18px; font-family:'Caveat',cursive; font-size:1.6rem; color:var(--paper); background:var(--ciruela); padding:2px 14px; border-radius:14px; transform:rotate(-3deg); box-shadow:0 6px 14px -6px rgba(36,28,21,.5); }
+.pm-close{ position:absolute; top:14px; right:14px; z-index:4; width:46px; height:46px; border-radius:50%; background:var(--paper); border:2.5px solid var(--ink); font-size:20px; line-height:1; display:flex; align-items:center; justify-content:center; transition:transform .3s cubic-bezier(.34,1.56,.64,1), background .2s; }
+.pm-close:hover{ transform:rotate(90deg) scale(1.08); background:var(--melon); }
+.pm-body{ padding:28px 32px 34px; }
+.pm-cat-slot .cat{ display:inline-block; font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; background:var(--melon-soft); border:2px solid var(--ink); padding:4px 12px; border-radius:14px; transform:rotate(-1.5deg); margin:0; }
+.pm-title-slot h3{ font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(1.8rem,5vw,3rem); line-height:1.02; margin:16px 0 14px; }
+.pm-desc-slot p{ font-size:1.06rem; line-height:1.62; color:#3a3128; max-width:62ch; }
+.pm-desc-slot .placeholder{ display:none; }
+.pm-actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:30px; }
+.pm-actions .pm-cta{ margin-left:auto; }
+.pm-count{ font-family:'Space Mono',monospace; font-size:11px; opacity:.6; margin-top:16px; }
+@media (max-width:560px){ .pm-actions .pm-cta{ margin-left:0; width:100%; justify-content:center; } }
 </style>
 </head>
 <body>
@@ -909,6 +941,26 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
   <span>© <span id="year"></span> María Dolores Zamatán Cuesta — <span class="es">diseño</span><span class="en">design</span></span>
 </footer>
 
+<!-- ============ PANTALLA DE PROYECTO ============ -->
+<div id="project-modal" role="dialog" aria-modal="true" aria-label="Detalle del proyecto">
+  <div class="pm-backdrop" data-pm-close></div>
+  <div class="pm-sheet">
+    <button class="pm-close" data-pm-close aria-label="Cerrar">✕</button>
+    <div class="pm-hero"><span class="pm-year"></span></div>
+    <div class="pm-body">
+      <div class="pm-cat-slot"></div>
+      <div class="pm-title-slot"></div>
+      <div class="pm-desc-slot"></div>
+      <div class="pm-count"></div>
+      <div class="pm-actions">
+        <button class="btn btn-line pm-prev">← <span class="es">Anterior</span><span class="en">Prev</span></button>
+        <button class="btn btn-line pm-next"><span class="es">Siguiente</span><span class="en">Next</span> →</button>
+        <a href="#contacto" class="btn btn-fill pm-cta" data-pm-close><span class="es">Quiero algo así</span><span class="en">I want one like this</span> →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <nav id="dock">
   <a href="#home" data-dock="home" aria-label="Inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11L12 4L20 11V20H14V14H10V20H4V11Z" stroke-linejoin="round"/></svg></a>
   <a href="#servicios" data-dock="servicios" aria-label="Servicios"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L14.5 8.5L21 9.5L16.2 14L17.6 20.5L12 17L6.4 20.5L7.8 14L3 9.5L9.5 8.5L12 2Z" stroke-linejoin="round"/></svg></a>
@@ -1007,6 +1059,83 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
     const body = encodeURIComponent(f.mensaje.value + '\n\n' + f.email.value);
     window.location.href = `mailto:md.zamatan.cuesta@gmail.com?subject=${subject}&body=${body}`;
   });
+
+  /* recorrido de lo más nuevo a lo más antiguo */
+  const tl = document.querySelector('.timeline-line');
+  if(tl){ Array.from(tl.children).reverse().forEach(c => tl.appendChild(c)); }
+
+  /* ============ PANTALLA DE PROYECTO (tarjetas clicables) ============ */
+  (function(){
+    const allCards = Array.from(document.querySelectorAll('#workGrid .card'));
+    const modal = document.getElementById('project-modal');
+    if(!modal || !allCards.length) return;
+    const heroWrap = modal.querySelector('.pm-hero');
+    const yearEl   = modal.querySelector('.pm-year');
+    const catSlot  = modal.querySelector('.pm-cat-slot');
+    const titleSlot= modal.querySelector('.pm-title-slot');
+    const descSlot = modal.querySelector('.pm-desc-slot');
+    const countEl  = modal.querySelector('.pm-count');
+    const sheet    = modal.querySelector('.pm-sheet');
+    let list = [], idx = -1;
+
+    const visible = () => allCards.filter(c => c.style.display !== 'none');
+
+    function render(i){
+      if(!list.length) return;
+      idx = (i + list.length) % list.length;
+      const card = list[idx];
+      heroWrap.querySelectorAll('.pm-img,.pm-noimg').forEach(n => n.remove());
+      const img = card.querySelector('.card-img');
+      if(img){
+        const c = img.cloneNode(true); c.className = 'pm-img'; c.loading = 'eager';
+        heroWrap.appendChild(c);
+      } else {
+        const d = document.createElement('div'); d.className = 'pm-noimg'; d.textContent = 'MDZC ✦';
+        heroWrap.appendChild(d);
+      }
+      const yr = card.querySelector('.yr');
+      yearEl.innerHTML = yr ? yr.innerHTML : '';
+      yearEl.style.display = yr ? '' : 'none';
+      catSlot.innerHTML = '';
+      card.querySelectorAll('.cat').forEach(n => catSlot.appendChild(n.cloneNode(true)));
+      titleSlot.innerHTML = '';
+      const h = card.querySelector('h3'); if(h) titleSlot.appendChild(h.cloneNode(true));
+      descSlot.innerHTML = '';
+      const p = card.querySelector('p:not(.placeholder)'); if(p) descSlot.appendChild(p.cloneNode(true));
+      countEl.textContent = (idx + 1) + ' / ' + list.length;
+      sheet.scrollTop = 0;
+    }
+
+    function openCard(card){
+      list = visible();
+      const i = list.indexOf(card); if(i < 0) return;
+      render(i);
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close(){
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    allCards.forEach(card => {
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.addEventListener('click', () => openCard(card));
+      card.addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openCard(card); }
+      });
+    });
+    modal.querySelectorAll('[data-pm-close]').forEach(el => el.addEventListener('click', close));
+    modal.querySelector('.pm-prev').addEventListener('click', () => render(idx - 1));
+    modal.querySelector('.pm-next').addEventListener('click', () => render(idx + 1));
+    document.addEventListener('keydown', e => {
+      if(!modal.classList.contains('open')) return;
+      if(e.key === 'Escape') close();
+      else if(e.key === 'ArrowLeft') render(idx - 1);
+      else if(e.key === 'ArrowRight') render(idx + 1);
+    });
+  })();
 </script>
 
 </body>
