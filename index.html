@@ -568,7 +568,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 }
 #workGrid.stamps .card h3{ order:2; font-size:.82rem; line-height:1.14; margin:5px 6px 0; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; }
 #workGrid.stamps .card::before{
-  content:"MDZC · DISEÑO"; position:absolute; bottom:7px; left:0; right:0; text-align:center;
+  content:"Nº " counter(stamp,decimal-leading-zero) " · MDZC"; position:absolute; bottom:7px; left:0; right:0; text-align:center;
   font-family:'Space Mono',monospace; font-size:7px; letter-spacing:.12em; opacity:.5;
 }
 
@@ -595,8 +595,19 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 }
 .masthead .mh-mid{ opacity:.5; letter-spacing:.14em; }
 @media (max-width:680px){ .masthead{ font-size:9px; letter-spacing:.12em; } .masthead .mh-mid{ display:none; } }
-/* filete + índice editorial bajo el eyebrow de cada sección */
-.sec-title{ position:relative; }
+/* folio editorial (running head) al principio de cada sección */
+.folio{
+  display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+  padding-bottom:12px; margin-bottom:24px; border-bottom:1px solid var(--ink);
+  font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+  animation:blockIn .6s cubic-bezier(.22,1,.36,1) both;
+}
+.folio .fnum{ font-weight:700; }
+.folio .fright{ opacity:.5; letter-spacing:.14em; }
+@media (max-width:560px){ .folio{ font-size:8.5px; letter-spacing:.1em; } }
+/* números de lámina en los sellos (filatelia + editorial) */
+#workGrid.stamps{ counter-reset:stamp; }
+#workGrid.stamps .card{ counter-increment:stamp; }
 </style>
 </head>
 <body>
@@ -753,6 +764,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
   <section id="sobre" class="page">
     <div class="sec-block about-sec">
       <div style="padding:36px 28px 4px;">
+        <div class="folio"><span class="fleft"><span class="fnum">Nº 01</span> · <span class="es">Sobre mí</span><span class="en">About</span></span><span class="fright">MDZC · ’26</span></div>
         <div class="eyebrow"><span class="es">Sobre mí</span><span class="en">About</span></div>
         <h2 class="sec-title"><span class="es">De la planta al <span class="signature">pixel.</span></span><span class="en">From floor plan to <span class="signature">pixel.</span></span></h2>
 
@@ -889,6 +901,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
   <!-- ============ SERVICIOS ============ -->
   <section id="servicios" class="page">
     <div class="sec-block">
+      <div class="folio"><span class="fleft"><span class="fnum">Nº 02</span> · <span class="es">Servicios</span><span class="en">Services</span></span><span class="fright">MDZC · ’26</span></div>
       <div class="eyebrow"><span class="es">Servicios</span><span class="en">Services</span></div>
       <h2 class="sec-title"><span class="es">Trabajemos <span class="signature">juntos.</span></span><span class="en">Let's work <span class="signature">together.</span></span></h2>
       <p class="serv-intro es">Diseño identidad, papelería, redes sociales, webs e invitaciones para negocios y particulares. Precios orientativos — el presupuesto final se cierra tras una consulta inicial según la complejidad del proyecto.</p>
@@ -999,6 +1012,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
   <!-- ============ TRABAJO ============ -->
   <section id="trabajo" class="page">
     <div class="sec-block" style="padding-top:36px;">
+      <div class="folio"><span class="fleft"><span class="fnum">Nº 03</span> · <span class="es">Trabajo</span><span class="en">Work</span></span><span class="fright">MDZC · ’26</span></div>
       <div class="eyebrow"><span class="es">Trabajo</span><span class="en">Work</span></div>
       <h2 class="sec-title"><span class="es">Mi colección de <span class="signature">proyectos.</span></span><span class="en">My collection of <span class="signature">projects.</span></span></h2>
       <p style="max-width:58ch; margin-top:8px; opacity:.85;">
@@ -1149,6 +1163,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
   <section id="cv" class="page">
     <div class="sec-block cv-sec">
       <div style="padding:40px 24px;">
+        <div class="folio"><span class="fleft"><span class="fnum">Nº 04</span> · CV</span><span class="fright">MDZC · ’26</span></div>
         <div class="eyebrow">CV</div>
         <h2 class="sec-title"><span class="es">Todo lo que <span class="signature">sé hacer.</span></span><span class="en">Everything I <span class="signature">can do.</span></span></h2>
 
@@ -1243,6 +1258,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
   <section id="contacto" class="page">
     <div class="sec-block contact-sec">
       <div style="padding:40px 24px;">
+        <div class="folio"><span class="fleft"><span class="fnum">Nº 05</span> · <span class="es">Contacto</span><span class="en">Contact</span></span><span class="fright">MDZC · ’26</span></div>
         <div class="eyebrow"><span class="es">Contacto</span><span class="en">Contact</span></div>
         <h2 class="sec-title"><span class="es">Hablemos de <span class="signature">tu proyecto.</span></span><span class="en">Let's talk about <span class="signature">your project.</span></span></h2>
 
