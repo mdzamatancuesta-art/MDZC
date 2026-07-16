@@ -512,6 +512,79 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 #servicios .price-card h4{ margin-top:6px; padding-right:64px; }
 #servicios .serv-group-head h3{ position:relative; display:inline-block; }
 #servicios .serv-group-head h3::after{ content:""; position:absolute; left:0; right:0; bottom:-6px; height:5px; background:var(--sol-soft); border-radius:3px; transform:rotate(-.5deg); z-index:-1; }
+
+/* ============ TRABAJO — HOJA DE SELLOS ============ */
+#workGrid.stamps{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:26px 20px;
+  margin-top:12px; padding:24px 18px;
+  background:
+    radial-gradient(rgba(36,28,21,0.05) 1.3px, transparent 1.4px) 0 0/18px 18px,
+    var(--card);
+  border:2px dashed var(--line); border-radius:16px;
+}
+@media(min-width:680px){ #workGrid.stamps{ grid-template-columns:repeat(3,1fr); } }
+@media(min-width:1020px){ #workGrid.stamps{ grid-template-columns:repeat(4,1fr); } }
+@keyframes stampIn{ from{opacity:0;} to{opacity:1;} }
+#workGrid.stamps .card{
+  all:unset; box-sizing:border-box; cursor:pointer; position:relative;
+  display:flex; flex-direction:column; background:#fff; padding:9px 9px 22px;
+  filter:drop-shadow(0 8px 9px rgba(36,28,21,.26));
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1), filter .35s;
+  animation-name:stampIn; animation-duration:.55s; animation-timing-function:cubic-bezier(.22,1,.36,1); animation-fill-mode:both;
+  --s:17px; --r:4.6px;
+  -webkit-mask:
+    radial-gradient(var(--r) at 50% 0,#0000 97%,#000) 0 calc(var(--s)/-2)/var(--s) 100%,
+    radial-gradient(var(--r) at 50% 100%,#0000 97%,#000) 0 calc(var(--s)/2)/var(--s) 100%,
+    radial-gradient(var(--r) at 0 50%,#0000 97%,#000) calc(var(--s)/-2) 0/100% var(--s),
+    radial-gradient(var(--r) at 100% 50%,#0000 97%,#000) calc(var(--s)/2) 0/100% var(--s);
+  -webkit-mask-composite:source-in;
+  mask:
+    radial-gradient(var(--r) at 50% 0,#0000 97%,#000) 0 calc(var(--s)/-2)/var(--s) 100%,
+    radial-gradient(var(--r) at 50% 100%,#0000 97%,#000) 0 calc(var(--s)/2)/var(--s) 100%,
+    radial-gradient(var(--r) at 0 50%,#0000 97%,#000) calc(var(--s)/-2) 0/100% var(--s),
+    radial-gradient(var(--r) at 100% 50%,#0000 97%,#000) calc(var(--s)/2) 0/100% var(--s);
+  mask-composite:intersect;
+}
+#workGrid.stamps .card:nth-child(4n+1){ transform:rotate(-2deg); }
+#workGrid.stamps .card:nth-child(4n+2){ transform:rotate(1.6deg); }
+#workGrid.stamps .card:nth-child(4n+3){ transform:rotate(-1deg); }
+#workGrid.stamps .card:nth-child(4n){ transform:rotate(2.2deg); }
+#workGrid.stamps .card:hover, #workGrid.stamps .card:focus-visible{ transform:rotate(0deg) translateY(-8px) scale(1.05); filter:drop-shadow(0 16px 16px rgba(36,28,21,.32)); z-index:5; }
+#workGrid.stamps .card > .tape, #workGrid.stamps .card > .badge-icon, #workGrid.stamps .card > p{ display:none !important; }
+#workGrid.stamps .card::after{ content:none; }
+#workGrid.stamps .card > .card-img{
+  order:0; width:100%; height:118px; object-fit:cover; margin:0; border-radius:2px;
+  filter:saturate(1.06); background:var(--sol-soft);
+}
+#workGrid.stamps .card .yr{
+  position:absolute; top:15px; left:15px; right:auto; bottom:auto; z-index:2; margin:0; width:auto;
+  font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:.72rem;
+  color:#fff; background:var(--ciruela); padding:1px 7px; border-radius:4px; transform:rotate(-4deg);
+}
+#workGrid.stamps .card .cat{
+  order:1; align-self:flex-start; margin:9px 4px 0; transform:rotate(-1deg);
+  font-family:'Space Mono',monospace; font-size:8.5px; text-transform:uppercase;
+  background:var(--sol-soft); border:1px solid var(--ink); border-radius:8px; padding:1px 6px;
+}
+#workGrid.stamps .card h3{ order:2; font-size:.82rem; line-height:1.14; margin:5px 6px 0; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; }
+#workGrid.stamps .card::before{
+  content:"MDZC · DISEÑO"; position:absolute; bottom:7px; left:0; right:0; text-align:center;
+  font-family:'Space Mono',monospace; font-size:7px; letter-spacing:.12em; opacity:.5;
+}
+
+/* ============ LOGO ANIMADO ============ */
+.logo-svg{ overflow:visible; }
+.lg-disc{ transform-box:fill-box; transform-origin:center; animation:lgPop .6s cubic-bezier(.34,1.56,.64,1) both; }
+.lg-m{ stroke-dasharray:74; stroke-dashoffset:74; animation:lgDraw .9s ease .35s forwards; }
+.lg-star{ transform-box:fill-box; transform-origin:center; animation:lgTwinkle 2.8s ease-in-out infinite; }
+@keyframes lgPop{ 0%{ transform:scale(0) rotate(-30deg); } 100%{ transform:scale(1) rotate(0deg); } }
+@keyframes lgDraw{ to{ stroke-dashoffset:0; } }
+@keyframes lgTwinkle{ 0%,100%{ transform:scale(.7) rotate(0deg); opacity:.65; } 50%{ transform:scale(1.15) rotate(90deg); opacity:1; } }
+.logo-mark:hover .lg-disc{ animation:lgSpin .9s cubic-bezier(.34,1.56,.64,1); }
+@keyframes lgSpin{ to{ transform:rotate(360deg); } }
+@media (prefers-reduced-motion: reduce){
+  .lg-disc,.lg-star{ animation:none !important; } .lg-m{ stroke-dashoffset:0 !important; animation:none !important; }
+}
 </style>
 </head>
 <body>
@@ -528,9 +601,10 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 <header>
   <div class="navbar">
     <a href="#home" class="logo-mark">
-      <svg viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="17" fill="#FDE7A8"/>
-        <path d="M13 27V13L20 23L27 13V27" stroke="#241C15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <svg class="logo-svg" viewBox="0 0 44 44" fill="none">
+        <circle class="lg-disc" cx="21" cy="23" r="18" fill="#FDE7A8"/>
+        <path class="lg-m" d="M12 31 V16 L21 26 L30 16 V31" stroke="#241C15" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path class="lg-star" d="M35 5 C35.6 8.4 36 8.8 39.4 9.4 C36 10 35.6 10.4 35 13.8 C34.4 10.4 34 10 30.6 9.4 C34 8.8 34.4 8.4 35 5 Z" fill="#F2A900" stroke="#241C15" stroke-width="1" stroke-linejoin="round"/>
       </svg>
       <span>MDZ<span class="tag es">diseño</span><span class="tag en">design</span></span>
     </a>
@@ -909,10 +983,10 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
   <section id="trabajo" class="page">
     <div class="sec-block" style="padding-top:36px;">
       <div class="eyebrow"><span class="es">Trabajo</span><span class="en">Work</span></div>
-      <h2 class="sec-title"><span class="es">Trece lomos, <span class="signature">seis mundos.</span></span><span class="en">Thirteen spines, <span class="signature">six worlds.</span></span></h2>
-      <p style="max-width:56ch; margin-top:8px; opacity:.8;">
-        <span class="es">Cada proyecto es un lomo en la balda. Desliza la estantería y abre uno para ver el proyecto por dentro.</span>
-        <span class="en">Each project is a spine on the shelf. Slide the bookcase and open one to see the project inside.</span>
+      <h2 class="sec-title"><span class="es">Mi colección de <span class="signature">proyectos.</span></span><span class="en">My collection of <span class="signature">projects.</span></span></h2>
+      <p style="max-width:58ch; margin-top:8px; opacity:.85;">
+        <span class="es">Cada trabajo es un sello de mi colección. Ábrelo y verás cómo ayudé a esa marca a verse — y vender — mejor. ¿El próximo es el tuyo?</span>
+        <span class="en">Each project is a stamp in my collection. Open one to see how I helped that brand look — and sell — better. Yours could be next.</span>
       </p>
 
       <div class="filters">
@@ -925,7 +999,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
         <button class="filter-btn" data-filter="envases"><span class="es">Envases</span><span class="en">Packaging</span></button>
       </div>
 
-      <div class="grid-work shelf" id="workGrid">
+      <div class="grid-work stamps" id="workGrid">
 
         <div class="card" data-cat="escenografia">
           <div class="tape"></div><span class="yr">2018</span>
@@ -1047,9 +1121,9 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
       </div>
 
       <div class="services-cta" style="margin-top:8px;">
-        <p class="es">¿Tienes un proyecto entre manos? Cuéntamelo y te digo cómo lo enfocaría.</p>
-        <p class="en">Got a project in mind? Tell me about it and I'll show you how I'd approach it.</p>
-        <a href="#contacto" class="btn btn-fill"><span class="es">Hablemos de tu proyecto</span><span class="en">Let's talk about your project</span> →</a>
+        <p class="es"><strong>Tu marca también merece su sello.</strong><br>Cuéntame tu proyecto y te digo cómo lo enfocaría — presupuesto sin compromiso.</p>
+        <p class="en"><strong>Your brand deserves its own stamp.</strong><br>Tell me about your project and I'll show you how I'd approach it — free quote, no strings.</p>
+        <a href="#contacto" class="btn btn-fill"><span class="es">Pide tu presupuesto</span><span class="en">Get your quote</span> →</a>
       </div>
     </div>
   </section>
