@@ -585,6 +585,18 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 @media (prefers-reduced-motion: reduce){
   .lg-disc,.lg-star{ animation:none !important; } .lg-m{ stroke-dashoffset:0 !important; animation:none !important; }
 }
+
+/* ============ CAPA EDITORIAL (masthead + filetes tipo Studio VØR) ============ */
+.masthead{
+  display:flex; justify-content:space-between; align-items:center; gap:14px;
+  padding-bottom:14px; margin-bottom:40px; border-bottom:1px solid var(--ink);
+  font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase;
+  animation:blockIn .7s cubic-bezier(.22,1,.36,1) both;
+}
+.masthead .mh-mid{ opacity:.5; letter-spacing:.14em; }
+@media (max-width:680px){ .masthead{ font-size:9px; letter-spacing:.12em; } .masthead .mh-mid{ display:none; } }
+/* filete + índice editorial bajo el eyebrow de cada sección */
+.sec-title{ position:relative; }
 </style>
 </head>
 <body>
@@ -631,6 +643,11 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 
   <!-- ============ HOME ============ -->
   <section id="home" class="page active hero">
+    <div class="masthead">
+      <span><span class="es">Portfolio ’26</span><span class="en">Portfolio ’26</span></span>
+      <span class="mh-mid">María Dolores Zamatán Cuesta</span>
+      <span><span class="es">Diseñadora gráfica · España</span><span class="en">Graphic designer · Spain</span></span>
+    </div>
     <div class="hero-grid">
       <div>
         <span class="hero-hand signature es">¡Hola! soy</span>
