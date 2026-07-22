@@ -18,7 +18,7 @@
   --ink:#241C15;
   --sol:#F2A900;
   --sol-soft:#FDE7A8;
-  --melon:#FF7A47;
+  --melon:#B31237;
   --melon-soft:#FFD9C4;
   --ciruela:#8B4A9C;
   --ciruela-soft:#E9D6EE;
@@ -1461,7 +1461,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
     window.addEventListener('mousemove', (e) => { dot.style.left = e.clientX+'px'; dot.style.top = e.clientY+'px'; });
     document.querySelectorAll('a,button').forEach(el => {
       el.addEventListener('mouseenter', () => { dot.style.width='32px'; dot.style.height='32px'; dot.style.background='#8B4A9C'; });
-      el.addEventListener('mouseleave', () => { dot.style.width='15px'; dot.style.height='15px'; dot.style.background='#FF7A47'; });
+      el.addEventListener('mouseleave', () => { dot.style.width='15px'; dot.style.height='15px'; dot.style.background='#B31237'; });
     });
   }
 
@@ -1587,7 +1587,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
     const oneup=document.createElement('div'); oneup.id='oneup'; oneup.textContent='1UP'; document.body.appendChild(oneup);
     function party(){
       oneup.classList.remove('show'); void oneup.offsetWidth; oneup.classList.add('show');
-      const glyphs=['✦','●','★','◆'], cols=['#F2A900','#FF7A47','#8B4A9C','#E0A93B'];
+      const glyphs=['✦','●','★','◆'], cols=['#F2A900','#B31237','#8B4A9C','#E0A93B'];
       for(let n=0;n<30;n++){
         const c=document.createElement('div'); c.className='coin'; c.textContent=glyphs[n%glyphs.length];
         c.style.left=(Math.random()*100)+'vw'; c.style.color=cols[n%cols.length];
