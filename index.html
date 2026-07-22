@@ -390,6 +390,29 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 .timeline-line::-webkit-scrollbar-thumb{ background:rgba(36,28,21,.3); border-radius:8px; }
 @media (prefers-reduced-motion: reduce){ .timeline-line{ scroll-behavior:auto; } }
 
+/* ============ CV — CINTA HORIZONTAL DE TARJETAS ============ */
+.reel-hint{ font-family:'Space Mono',monospace; font-size:11px; opacity:.72; margin:4px 0 0; letter-spacing:.02em; }
+.cv-reel{
+  display:flex; flex-direction:row; align-items:flex-start; gap:16px;
+  overflow-x:auto; overflow-y:hidden;
+  padding:14px 6px 22px; margin-top:10px; cursor:grab;
+  scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch;
+}
+.cv-reel.dragging{ cursor:grabbing; }
+.cv-reel .cv-card{
+  flex:0 0 clamp(244px,80vw,300px); scroll-snap-align:start; box-sizing:border-box;
+  background:var(--card); border:2.5px solid var(--ink); border-radius:20px;
+  padding:22px 20px; box-shadow:0 14px 24px -16px rgba(36,28,21,.4);
+}
+.cv-reel .cv-card:nth-child(odd){ transform:rotate(-.5deg); }
+.cv-reel .cv-card:nth-child(even){ transform:rotate(.5deg); }
+.cv-reel .cv-card > .cv-h:first-child{ margin-top:0; }
+.cv-reel .cv-skillcat:last-child{ margin-bottom:0; }
+.cv-reel .cv-list li:last-child{ padding-bottom:0; }
+.cv-reel::-webkit-scrollbar{ height:8px; }
+.cv-reel::-webkit-scrollbar-thumb{ background:rgba(36,28,21,.3); border-radius:8px; }
+@media (prefers-reduced-motion: reduce){ .cv-reel{ scroll-behavior:auto; } }
+
 /* ============ CV — VISUALIZACIÓN COMPLETA ============ */
 .cv-sec .sec-title{ margin-bottom:26px; }
 .cv-stats{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:32px; }
@@ -1243,9 +1266,10 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
           <div class="cv-stat"><span class="cv-stat-num">2</span><span class="cv-stat-lbl es">idiomas</span><span class="cv-stat-lbl en">languages</span></div>
         </div>
 
-        <div class="cv-grid">
+        <p class="reel-hint"><span class="es">Desliza para ver todo →</span><span class="en">Swipe to see it all →</span></p>
+        <div class="cv-reel">
 
-          <div class="cv-panel">
+          <div class="cv-card">
             <h3 class="cv-h"><span class="es">Herramientas</span><span class="en">Toolkit</span></h3>
 
             <div class="cv-skillcat">
@@ -1274,7 +1298,10 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
               <div class="cv-chips c-brown"><span><i class="ic">O</i>Microsoft Office</span><span><i class="ic">G</i>Google Workspace</span></div>
             </div>
 
-            <h3 class="cv-h h2"><span class="es">Idiomas</span><span class="en">Languages</span></h3>
+          </div>
+
+          <div class="cv-card">
+            <h3 class="cv-h"><span class="es">Idiomas</span><span class="en">Languages</span></h3>
             <div class="cv-langs">
               <div class="cv-lang">
                 <div class="cv-lang-n">Español <small class="es">nativo</small><small class="en">native</small></div>
@@ -1287,7 +1314,7 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
             </div>
           </div>
 
-          <div class="cv-panel">
+          <div class="cv-card">
             <h3 class="cv-h"><span class="es">Experiencia</span><span class="en">Experience</span></h3>
             <ul class="cv-list">
               <li><span class="cv-yr">Dic 2024—<span class="es">hoy</span><span class="en">now</span></span><span class="cv-role"><span class="es">Diseñadora gráfica</span><span class="en">Graphic designer</span></span><span class="cv-org">Alzará Grupo de Comunicación</span></li>
@@ -1300,7 +1327,10 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
               <li><span class="cv-yr">2018 & 2020</span><span class="cv-role"><span class="es">Organización</span><span class="en">Organiser</span></span><span class="cv-org"><span class="es">Evento de arte urbano MOS</span><span class="en">MOS urban art event</span></span></li>
             </ul>
 
-            <h3 class="cv-h h3"><span class="es">Formación</span><span class="en">Education</span></h3>
+          </div>
+
+          <div class="cv-card">
+            <h3 class="cv-h"><span class="es">Formación</span><span class="en">Education</span></h3>
             <ul class="cv-list">
               <li><span class="cv-yr">2018—2020</span><span class="cv-role"><span class="es">G.S. Marketing y Publicidad</span><span class="en">Higher Degree · Marketing &amp; Advertising</span></span><span class="cv-org">Colegio Ntra. Sra. del Pilar</span></li>
               <li><span class="cv-yr">2016—2018</span><span class="cv-role"><span class="es">G.S. Diseño y Edición de Publicaciones Impresas y Multimedia</span><span class="en">Higher Degree · Print &amp; Multimedia Publication Design</span></span><span class="cv-org">La Salle Sagrado Corazón</span></li>
@@ -1309,7 +1339,10 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
               <li><span class="cv-yr">2022</span><span class="cv-role">Data Security Protection Officer (DSPO)</span></li>
             </ul>
 
-            <h3 class="cv-h h2">🏆 <span class="es">Logros</span><span class="en">Achievements</span></h3>
+          </div>
+
+          <div class="cv-card">
+            <h3 class="cv-h">🏆 <span class="es">Logros</span><span class="en">Achievements</span></h3>
             <div class="cv-award"><span class="ic">🏆</span><span class="t"><b>2018</b> · <span class="es">1er premio — V CreaMadrid, La Salle Innovación Empresarial</span><span class="en">1st prize — V CreaMadrid, La Salle Business Innovation</span><span class="ach-tag">✓ <span class="es">Desbloqueado</span><span class="en">Unlocked</span></span></span></div>
             <div class="cv-award"><span class="ic">🎽</span><span class="t"><b>2022</b> · <span class="es">Semifinalista y mención especial — Concurso Nacional "Artistas en Camiseta"</span><span class="en">Semifinalist &amp; special mention — National "Artistas en Camiseta" contest</span><span class="ach-tag">✓ <span class="es">Desbloqueado</span><span class="en">Unlocked</span></span></span></div>
           </div>
@@ -1648,16 +1681,14 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
     }, { passive:false });
   });
   /* arrastre para deslizar la cinta de la historia laboral (sus tarjetas no son clicables) */
-  (function(){
-    const tlLine = document.querySelector('.timeline-line');
-    if(!tlLine) return;
+  document.querySelectorAll('.timeline-line, .cv-reel').forEach(reel => {
     let down = false, startX = 0, startLeft = 0;
-    tlLine.addEventListener('pointerdown', e => { down = true; startX = e.clientX; startLeft = tlLine.scrollLeft; tlLine.classList.add('dragging'); tlLine.setPointerCapture(e.pointerId); });
-    tlLine.addEventListener('pointermove', e => { if(down) tlLine.scrollLeft = startLeft - (e.clientX - startX); });
-    const end = () => { down = false; tlLine.classList.remove('dragging'); };
-    tlLine.addEventListener('pointerup', end);
-    tlLine.addEventListener('pointercancel', end);
-  })();
+    reel.addEventListener('pointerdown', e => { down = true; startX = e.clientX; startLeft = reel.scrollLeft; reel.classList.add('dragging'); reel.setPointerCapture(e.pointerId); });
+    reel.addEventListener('pointermove', e => { if(down) reel.scrollLeft = startLeft - (e.clientX - startX); });
+    const end = () => { down = false; reel.classList.remove('dragging'); };
+    reel.addEventListener('pointerup', end);
+    reel.addEventListener('pointercancel', end);
+  });
 
   /* easter egg videojuego: código Konami (o triple clic en el logo) -> monedas + 1UP */
   (function(){
