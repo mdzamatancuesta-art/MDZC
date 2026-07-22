@@ -640,7 +640,8 @@ body[data-section="sobre"]{ background-color:#99B4AA; color:#241C15; }
 body[data-section="servicios"]{ background-color:#ABA66F; color:#241C15; }
 body[data-section="trabajo"]{ background-color:#E1B8A2; color:#241C15; }
 body[data-section="cv"]{ background-color:#6B6D43; color:#FBF3E4; }
-body[data-section="contacto"]{ background-color:#CF7D65; color:#241C15; }
+body[data-section="contacto"]{ background-color:#D9A8B0; color:#241C15; }
+body[data-section="tarjeta"]{ background-color:#B31237; color:#FBF3E4; }
 body:not([data-section="home"]) .blob{ opacity:0; }
 body:not([data-section="home"]) .sec-block{ background:transparent !important; background-image:none !important; }
 body:not([data-section="home"]) .sec-title{ color:inherit; }
@@ -699,6 +700,24 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
 @keyframes menuBigHop{ 0%{transform:translateY(0) scale(1);} 45%{transform:translateY(-32px) scale(1.35);} 100%{transform:translateY(0) scale(1);} }
 @media (max-width:400px){ #menu-overlay a::before{ left:-24px; width:13px; height:13px; } }
 @media (prefers-reduced-motion: reduce){ #menu-overlay a::before{ animation:none; } }
+
+/* ============ QR + TARJETA DE VISITA ============ */
+.qr-mini{ display:flex; align-items:center; gap:12px; margin-top:18px; padding-top:16px; border-top:2px dashed rgba(251,243,228,0.28); }
+.qr-mini img{ width:72px; height:72px; border:2px solid var(--ink); border-radius:8px; background:var(--paper); }
+.qr-mini span{ font-family:'Space Mono',monospace; font-size:11px; line-height:1.4; opacity:.9; }
+#tarjeta .card-view{ min-height:calc(100vh - 140px); display:flex; align-items:center; justify-content:center; padding:10px 0 70px; }
+.vcard-card{ width:min(370px,92vw); background:var(--paper); color:var(--ink); border:3px solid var(--ink); border-radius:26px; padding:30px 28px 26px; text-align:center; box-shadow:0 26px 55px -18px rgba(36,28,21,.55); position:relative; }
+.vc-logo{ width:104px; height:auto; margin:0 auto 12px; display:block; }
+.vc-name{ font-size:1.5rem; line-height:1.04; }
+.vc-name span{ color:var(--granate); }
+.vc-role{ font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; opacity:.7; margin:9px 0 18px; }
+.vc-links{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:20px; }
+.vc-links a{ font-family:'Space Mono',monospace; font-size:12px; border:2px solid var(--ink); border-radius:14px; padding:5px 12px; transition:background .2s, color .2s, border-color .2s; }
+.vc-links a:hover{ background:var(--granate); color:var(--paper); border-color:var(--granate); }
+.vc-qr{ width:148px; height:148px; margin:0 auto 18px; display:block; border:3px solid var(--ink); border-radius:10px; }
+.vcard-card .btn{ width:100%; justify-content:center; }
+.vc-back{ display:inline-block; margin-top:14px; font-family:'Space Mono',monospace; font-size:11px; opacity:.6; }
+.vc-back:hover{ opacity:1; }
 </style>
 </head>
 <body>
@@ -800,7 +819,7 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
         <a href="#servicios" class="idx" style="--c:#ABA66F"><span class="idx-sw"></span><span class="idx-body"><span class="idx-n">02 · Oliva</span><span class="idx-t"><span class="es">Servicios</span><span class="en">Services</span></span><span class="idx-d"><span class="es">Qué hago y tarifas.</span><span class="en">What I do and rates.</span></span></span></a>
         <a href="#trabajo" class="idx" style="--c:#E1B8A2"><span class="idx-sw"></span><span class="idx-body"><span class="idx-n">03 · Melocotón</span><span class="idx-t"><span class="es">Trabajo</span><span class="en">Work</span></span><span class="idx-d"><span class="es">Mi colección de proyectos.</span><span class="en">My project collection.</span></span></span></a>
         <a href="#cv" class="idx" style="--c:#6B6D43"><span class="idx-sw"></span><span class="idx-body"><span class="idx-n">04 · Musgo</span><span class="idx-t">CV</span><span class="idx-d"><span class="es">Todo lo que sé hacer.</span><span class="en">Everything I can do.</span></span></span></a>
-        <a href="#contacto" class="idx" style="--c:#CF7D65"><span class="idx-sw"></span><span class="idx-body"><span class="idx-n">05 · Terracota</span><span class="idx-t"><span class="es">Contacto</span><span class="en">Contact</span></span><span class="idx-d"><span class="es">Hablemos de tu proyecto.</span><span class="en">Let's talk.</span></span></span></a>
+        <a href="#contacto" class="idx" style="--c:#D9A8B0"><span class="idx-sw"></span><span class="idx-body"><span class="idx-n">05 · Rosa</span><span class="idx-t"><span class="es">Contacto</span><span class="en">Contact</span></span><span class="idx-d"><span class="es">Hablemos de tu proyecto.</span><span class="en">Let's talk.</span></span></span></a>
       </div>
     </div>
   </section>
@@ -1332,7 +1351,7 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
           </form>
 
           <div class="bubble">
-            <button type="button" id="vcard-btn" class="btn btn-fill" style="width:100%; justify-content:center; margin-bottom:16px;"><span class="es">＋ Guardar contacto</span><span class="en">＋ Save contact</span></button>
+            <button type="button" id="vcard-btn" class="btn btn-fill vcard-dl" style="width:100%; justify-content:center; margin-bottom:16px;"><span class="es">＋ Guardar contacto</span><span class="en">＋ Save contact</span></button>
             <div class="contact-links">
               <a href="mailto:md.zamatan.cuesta@gmail.com"><span>Email</span><span class="mono">→</span></a>
               <a href="https://wa.me/34636027019" target="_blank" rel="noopener">WhatsApp<span class="mono">→</span></a>
@@ -1341,8 +1360,29 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
               <a href="https://www.instagram.com/art_mdzc" target="_blank" rel="noopener">Instagram<span class="mono">→</span></a>
               <a href="https://lolizamatan.wixsite.com/mariadoloreszamatan" target="_blank" rel="noopener"><span class="es">Portfolio ampliado</span><span class="en">Extended portfolio</span><span class="mono">→</span></a>
             </div>
+            <div class="qr-mini"><img src="data:image/png;base64,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" alt="QR"><span class="es">Escanéame · abre mi web</span><span class="en">Scan me · opens my site</span></div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TARJETA DE VISITA ============ -->
+  <section id="tarjeta" class="page">
+    <div class="card-view">
+      <div class="vcard-card">
+        <img class="vc-logo" id="vc-logo" alt="MDZC — María Dolores Zamatán Cuesta">
+        <h2 class="vc-name">María Dolores <span>Zamatán Cuesta</span></h2>
+        <p class="vc-role"><span class="es">Diseñadora gráfica · España</span><span class="en">Graphic designer · Spain</span></p>
+        <div class="vc-links">
+          <a href="mailto:md.zamatan.cuesta@gmail.com">Email</a>
+          <a href="https://www.instagram.com/art_mdzc" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.linkedin.com/in/maria-dolores-zamatan-cuesta-66ba94188/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.behance.net/mariadoloreszamatan" target="_blank" rel="noopener">Behance</a>
+        </div>
+        <img class="vc-qr" src="data:image/png;base64,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" alt="QR — mdzamatancuesta-art.github.io/MDZC">
+        <button type="button" class="btn btn-fill vcard-dl"><span class="es">＋ Guardar contacto</span><span class="en">＋ Save contact</span></button>
+        <a href="#home" class="vc-back"><span class="es">← volver</span><span class="en">← back</span></a>
       </div>
     </div>
   </section>
@@ -1350,7 +1390,7 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
 </main>
 
 <footer>
-  <span>© <span id="year"></span> María Dolores Zamatán Cuesta — <span class="es">diseño</span><span class="en">design</span></span>
+  <span>© <span id="year"></span> María Dolores Zamatán Cuesta — <span class="es">diseño</span><span class="en">design</span> · <a href="#tarjeta" style="text-decoration:underline;"><span class="es">tarjeta de visita</span><span class="en">business card</span></a></span>
 </footer>
 
 <!-- ============ PANTALLA DE PROYECTO ============ -->
@@ -1425,7 +1465,7 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
   const pageIds = Array.from(pages).map(p => p.id);
   const dockLinks = document.querySelectorAll('#dock a');
 
-  const PT = { sobre:{c:'#99B4AA',name:'Salvia',num:'MDZC 01·99'}, servicios:{c:'#ABA66F',name:'Oliva',num:'MDZC 02·A6'}, trabajo:{c:'#E1B8A2',name:'Melocotón',num:'MDZC 03·E1'}, cv:{c:'#6B6D43',name:'Musgo',num:'MDZC 04·6B'}, contacto:{c:'#CF7D65',name:'Terracota',num:'MDZC 05·CF'} };
+  const PT = { sobre:{c:'#99B4AA',name:'Salvia',num:'MDZC 01·99'}, servicios:{c:'#ABA66F',name:'Oliva',num:'MDZC 02·A6'}, trabajo:{c:'#E1B8A2',name:'Melocotón',num:'MDZC 03·E1'}, cv:{c:'#6B6D43',name:'Musgo',num:'MDZC 04·6B'}, contacto:{c:'#D9A8B0',name:'Rosa',num:'MDZC 05·D9'} };
   const ptTag = document.getElementById('pantone-tag');
   function setSection(id){
     document.body.dataset.section = id;
@@ -1508,17 +1548,16 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
   });
 
   /* tarjeta de visita virtual: descargar vCard (guardar contacto) */
-  const vcardBtn = document.getElementById('vcard-btn');
-  if(vcardBtn){
-    vcardBtn.addEventListener('click', () => {
+  function downloadVcard(){
       const v = ['BEGIN:VCARD','VERSION:3.0','FN:María Dolores Zamatán Cuesta','N:Zamatán Cuesta;María Dolores;;;','TITLE:Diseñadora gráfica','EMAIL;TYPE=INTERNET:md.zamatan.cuesta@gmail.com','URL:https://mdzamatancuesta-art.github.io/MDZC/','X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/maria-dolores-zamatan-cuesta-66ba94188/','X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/art_mdzc','NOTE:Branding, packaging, web, editorial y eventos.','END:VCARD'].join('\r\n');
       const blob = new Blob([v], { type:'text/vcard;charset=utf-8' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob); a.download = 'Maria-Dolores-Zamatan-MDZC.vcf';
       document.body.appendChild(a); a.click(); a.remove();
       setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-    });
   }
+  document.querySelectorAll('.vcard-dl').forEach(b => b.addEventListener('click', downloadVcard));
+  { const vl=document.getElementById('vc-logo'), hl=document.querySelector('.logo-img'); if(vl&&hl) vl.src=hl.src; }
 
   /* recorrido de lo más nuevo a lo más antiguo */
   const tl = document.querySelector('.timeline-line');
