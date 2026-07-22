@@ -365,54 +365,6 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 .pm-feed img{ width:74px; height:74px; object-fit:cover; border:2px solid var(--ink); border-radius:10px; cursor:pointer; transition:transform .2s; }
 .pm-feed img:hover{ transform:scale(1.06) rotate(-2deg); }
 
-/* ============ ESTANTERÍA DE LOMOS (página Trabajo) ============ */
-#workGrid.shelf{
-  display:flex; flex-wrap:nowrap; align-items:flex-end; gap:0;
-  overflow-x:auto; overflow-y:hidden;
-  padding:36px 16px 0; margin-top:6px;
-  border-bottom:16px solid #4a3524; border-radius:3px;
-  box-shadow:0 20px 26px -22px rgba(36,28,21,.7);
-  scroll-snap-type:x proximity;
-}
-#workGrid.shelf .card{
-  all:unset; box-sizing:border-box; cursor:pointer; position:relative;
-  flex:0 0 auto; width:clamp(48px,6vw,58px); height:var(--h,320px);
-  margin:0 3px; padding:18px 7px 12px;
-  display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
-  border-radius:5px 5px 2px 2px; overflow:hidden; color:var(--paper);
-  scroll-snap-align:start;
-  box-shadow:inset -7px 0 12px -7px rgba(0,0,0,.4), inset 7px 0 9px -7px rgba(255,255,255,.28), 0 10px 16px -12px rgba(36,28,21,.55);
-  transition:transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s;
-}
-#workGrid.shelf .card:hover, #workGrid.shelf .card:focus-visible{
-  transform:translateY(-18px);
-  box-shadow:inset -7px 0 12px -7px rgba(0,0,0,.4), inset 7px 0 9px -7px rgba(255,255,255,.28), 0 26px 32px -16px rgba(36,28,21,.6);
-}
-#workGrid.shelf .card::before{ content:""; position:absolute; left:0; right:0; top:12px; height:3px; background:rgba(255,255,255,.4); }
-#workGrid.shelf .card::after{ content:""; position:absolute; left:0; right:0; bottom:10px; top:auto; width:auto; height:3px; background:rgba(0,0,0,.18); opacity:1; transform:none; border-radius:0; }
-#workGrid.shelf .card > .card-img,
-#workGrid.shelf .card > .badge-icon,
-#workGrid.shelf .card > .tape,
-#workGrid.shelf .card > .cat,
-#workGrid.shelf .card > p{ display:none !important; }
-#workGrid.shelf .card h3{
-  writing-mode:vertical-rl; text-orientation:mixed; margin:8px 0 0;
-  font-family:'Bricolage Grotesque',sans-serif; font-weight:800;
-  font-size:13px; line-height:1.15; letter-spacing:.01em; color:inherit;
-  white-space:nowrap; max-height:236px; overflow:hidden;
-}
-#workGrid.shelf .card .yr{
-  position:static; top:auto; right:auto; transform:none; margin-top:auto;
-  writing-mode:horizontal-tb; font-family:'Space Mono',monospace; font-size:8.5px; font-weight:700;
-  color:inherit; background:rgba(0,0,0,.16); padding:3px 5px; border-radius:4px;
-}
-#workGrid.shelf .card:nth-child(6n+1){ background:#F2A900; color:#241C15; --h:322px; }
-#workGrid.shelf .card:nth-child(6n+2){ background:#8B4A9C; --h:300px; }
-#workGrid.shelf .card:nth-child(6n+3){ background:#FF7A47; color:#241C15; --h:338px; }
-#workGrid.shelf .card:nth-child(6n+4){ background:#5a3d28; --h:292px; }
-#workGrid.shelf .card:nth-child(6n+5){ background:#E0A93B; color:#241C15; --h:316px; }
-#workGrid.shelf .card:nth-child(6n+6){ background:#B5638A; --h:306px; }
-
 /* ============ HISTORIA LABORAL: CINTA HORIZONTAL ============ */
 .timeline-line{
   display:flex; flex-direction:row; align-items:stretch; gap:18px;
@@ -432,9 +384,9 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 .timeline-line .tl-item:last-child::before{ right:50%; }
 .timeline-line .tl-item .tl-dot{ position:absolute; top:-28px; left:50%; transform:translateX(-50%); margin:0; }
 .timeline-line .tl-desc{ max-width:none; }
-.timeline-line::-webkit-scrollbar, #workGrid.shelf::-webkit-scrollbar{ height:8px; }
-.timeline-line::-webkit-scrollbar-thumb, #workGrid.shelf::-webkit-scrollbar-thumb{ background:rgba(36,28,21,.3); border-radius:8px; }
-@media (prefers-reduced-motion: reduce){ #workGrid.shelf .card, .timeline-line{ scroll-behavior:auto; } }
+.timeline-line::-webkit-scrollbar{ height:8px; }
+.timeline-line::-webkit-scrollbar-thumb{ background:rgba(36,28,21,.3); border-radius:8px; }
+@media (prefers-reduced-motion: reduce){ .timeline-line{ scroll-behavior:auto; } }
 
 /* ============ CV — VISUALIZACIÓN COMPLETA ============ */
 .cv-sec .sec-title{ margin-bottom:26px; }
@@ -587,19 +539,6 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
   font-family:'Space Mono',monospace; font-size:7px; letter-spacing:.12em; opacity:.5;
 }
 
-/* ============ LOGO ANIMADO ============ */
-.logo-svg{ overflow:visible; }
-.lg-disc{ transform-box:fill-box; transform-origin:center; animation:lgPop .6s cubic-bezier(.34,1.56,.64,1) both; }
-.lg-m{ stroke-dasharray:74; stroke-dashoffset:74; animation:lgDraw .9s ease .35s forwards; }
-.lg-star{ transform-box:fill-box; transform-origin:center; animation:lgTwinkle 2.8s ease-in-out infinite; }
-@keyframes lgPop{ 0%{ transform:scale(0) rotate(-30deg); } 100%{ transform:scale(1) rotate(0deg); } }
-@keyframes lgDraw{ to{ stroke-dashoffset:0; } }
-@keyframes lgTwinkle{ 0%,100%{ transform:scale(.7) rotate(0deg); opacity:.65; } 50%{ transform:scale(1.15) rotate(90deg); opacity:1; } }
-.logo-mark:hover .lg-disc{ animation:lgSpin .9s cubic-bezier(.34,1.56,.64,1); }
-@keyframes lgSpin{ to{ transform:rotate(360deg); } }
-@media (prefers-reduced-motion: reduce){
-  .lg-disc,.lg-star{ animation:none !important; } .lg-m{ stroke-dashoffset:0 !important; animation:none !important; }
-}
 
 /* ============ CAPA EDITORIAL (masthead + filetes tipo Studio VØR) ============ */
 .masthead{
@@ -1624,7 +1563,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
   })();
 
   /* rueda -> scroll horizontal en estantería (Trabajo) y cinta (historia laboral) */
-  document.querySelectorAll('#workGrid.shelf, .timeline-line').forEach(el => {
+  document.querySelectorAll('.timeline-line').forEach(el => {
     el.addEventListener('wheel', e => {
       if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){ el.scrollLeft += e.deltaY; e.preventDefault(); }
     }, { passive:false });
