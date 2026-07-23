@@ -332,9 +332,9 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 #dock .dock-items a{ flex:1; display:flex; align-items:center; justify-content:center; color:var(--ink); opacity:.42; transition:opacity .25s; -webkit-tap-highlight-color:transparent; }
 #dock .dock-items a svg{ width:22px; height:22px; transition:opacity .18s; }
 #dock .dock-items a.current{ opacity:0; }
-#dock .dock-bubble{ position:absolute; top:-30px; left:0; width:46px; height:46px; border-radius:50%; background:var(--granate); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 0 rgba(0,0,0,.06) inset, 0 10px 18px -5px rgba(179,18,55,.55); border:3px solid var(--paper); box-sizing:border-box; pointer-events:none; opacity:0; transition:opacity .25s; will-change:transform; }
+#dock .dock-bubble{ position:absolute; top:-30px; left:0; width:46px; height:46px; border-radius:50%; background:var(--granate); display:flex; align-items:center; justify-content:center; box-shadow:0 10px 18px -5px rgba(36,28,21,.5); border:2.5px solid var(--ink); box-sizing:border-box; pointer-events:none; opacity:0; transition:opacity .25s, background .3s; will-change:transform; }
 #dock .dock-bubble.show{ opacity:1; }
-#dock .dock-bubble svg{ width:22px; height:22px; stroke:#fff; color:#fff; }
+#dock .dock-bubble svg{ width:22px; height:22px; stroke:var(--dock-ico,#fff); color:var(--dock-ico,#fff); }
 @media (min-width:820px){ #dock{ display:none; } }
 
 /* ============ TARJETAS CLICABLES + PANTALLA DE PROYECTO ============ */
@@ -1509,6 +1509,8 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
   const dockBubble  = document.querySelector('#dock .dock-bubble');
   const dockOrder   = Array.from(dockLinks).map(a => a.dataset.dock);
   const DOCK_H = 60, DOCK_N = dockLinks.length;
+  const DOCK_C = { home:'#B31237', servicios:'#ABA66F', trabajo:'#E1B8A2', cv:'#6B6D43', contacto:'#D9A8B0' };
+  function dockIcoColor(hex){ const c = hex.replace('#',''); const r = parseInt(c.slice(0,2),16), g = parseInt(c.slice(2,4),16), b = parseInt(c.slice(4,6),16); return (0.299*r + 0.587*g + 0.114*b) > 150 ? '#241C15' : '#fff'; }
   let dockW = 0, dockCx = -100, dockRAF = 0, lastDockId = 'home';
   function measureDock(){ dockW = document.getElementById('dock').clientWidth || 0; }
   function dockFlatPath(w){ const r = 20;
@@ -1530,6 +1532,9 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
     if(i < 0){ dockBubble.classList.remove('show'); drawDock(-1); return; }
     const svg = dockLinks[i].querySelector('svg');
     dockBubble.innerHTML = svg ? svg.outerHTML : '';
+    const col = DOCK_C[id] || '#B31237';
+    dockBubble.style.background = col;
+    dockBubble.style.setProperty('--dock-ico', dockIcoColor(col));
     dockBubble.classList.add('show');
     const target = dockW*(i+0.5)/DOCK_N;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
