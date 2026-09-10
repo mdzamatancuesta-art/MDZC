@@ -1659,7 +1659,7 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
       `C${(cx+22).toFixed(1)},${nD} ${(rr-c).toFixed(1)},0 ${rr.toFixed(1)},0 `+
       `L${w-r},0 Q${w},0 ${w},${r} L${w},${DOCK_H-r} Q${w},${DOCK_H} ${w-r},${DOCK_H} L${r},${DOCK_H} Q0,${DOCK_H} 0,${DOCK_H-r} Z`; }
   function drawDock(cx){ dockCx = cx;
-    dockBarPath.setAttribute('d', cx < 0 ? dockFlatPath(dockW) : dockNotchPath(dockW, cx));
+    dockBarPath.setAttribute('d', dockFlatPath(dockW));
     if(cx >= 0) dockBubble.style.transform = `translateX(${(cx-22).toFixed(1)}px)`; }
   function updateDock(id, animate){
     if(!dockW) measureDock();
