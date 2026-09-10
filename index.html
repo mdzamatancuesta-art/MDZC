@@ -406,7 +406,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 #dock .dock-items a{ flex:1; display:flex; align-items:center; justify-content:center; color:var(--ink); opacity:.42; transition:opacity .25s; -webkit-tap-highlight-color:transparent; }
 #dock .dock-items a svg{ width:22px; height:22px; transition:opacity .18s; }
 #dock .dock-items a.current{ opacity:0; }
-#dock .dock-bubble{ position:absolute; top:-14px; left:0; width:44px; height:44px; border-radius:50%; background:var(--granate); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 15px -6px rgba(36,28,21,.45); box-sizing:border-box; pointer-events:none; opacity:0; transition:opacity .25s, background .3s; will-change:transform; }
+#dock .dock-bubble{ position:absolute; top:4px; left:0; width:44px; height:44px; border-radius:50%; background:var(--granate); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 15px -6px rgba(36,28,21,.45); box-sizing:border-box; pointer-events:none; opacity:0; transition:opacity .25s, background .3s; will-change:transform; }
 #dock .dock-bubble.show{ opacity:1; }
 #dock .dock-bubble svg{ width:22px; height:22px; stroke:var(--dock-ico,#fff); color:var(--dock-ico,#fff); }
 @media (min-width:820px){ #dock{ display:none; } }
@@ -1651,7 +1651,7 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
   function measureDock(){ dockW = document.getElementById('dock').clientWidth || 0; }
   function dockFlatPath(w){ const r = 20;
     return `M0,${r} Q0,0 ${r},0 L${w-r},0 Q${w},0 ${w},${r} L${w},${DOCK_H-r} Q${w},${DOCK_H} ${w-r},${DOCK_H} L${r},${DOCK_H} Q0,${DOCK_H} 0,${DOCK_H-r} Z`; }
-  function dockNotchPath(w, cx){ const r = 20, nW = 32, nD = 14, c = nW*0.42;
+  function dockNotchPath(w, cx){ const r = 20, nW = 30, nD = 7, c = nW*0.42;
     cx = Math.max(nW, Math.min(w - nW, cx));
     const l = cx - nW, rr = cx + nW;
     return `M0,${r} Q0,0 ${r},0 L${l.toFixed(1)},0 `+
