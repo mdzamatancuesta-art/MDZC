@@ -532,18 +532,14 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 @media (prefers-reduced-motion: reduce){ .timeline-line{ scroll-behavior:auto; } }
 
 /* ============ CV — CINTA HORIZONTAL DE TARJETAS ============ */
-.reel-hint{ font-family:'Space Mono',monospace; font-size:11px; opacity:.72; margin:4px 0 0; letter-spacing:.02em; }
 .cv-reel-wrap{ position:relative; }
-.cv-arrow{ display:none; }
-@media (min-width:820px){
-  .cv-reel-wrap .reel-hint{ display:none; }
-  .cv-arrow{ display:flex; align-items:center; justify-content:center; position:absolute; top:132px; z-index:6; width:46px; height:46px; border-radius:50%; background:var(--card); color:var(--ink); border:2.5px solid var(--ink); box-shadow:0 5px 0 rgba(36,28,21,.8); cursor:pointer; font-size:26px; line-height:1; padding-bottom:3px; transition:transform .15s, box-shadow .15s, opacity .2s; }
-  .cv-arrow:hover{ background:var(--sol-soft); }
-  .cv-arrow:active{ transform:translateY(3px); box-shadow:0 1px 0 rgba(36,28,21,.8); }
-  .cv-arrow-prev{ left:-14px; }
-  .cv-arrow-next{ right:-14px; }
-  .cv-arrow[disabled]{ opacity:0; pointer-events:none; }
-}
+.cv-reel-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin:6px 0 2px; }
+.reel-hint{ font-family:'Space Mono',monospace; font-size:11px; opacity:.72; letter-spacing:.02em; margin:0; }
+.cv-arrows{ display:flex; gap:8px; flex:0 0 auto; }
+.cv-arrow{ display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background:var(--card); color:var(--ink); border:2.5px solid var(--ink); box-shadow:0 4px 0 rgba(36,28,21,.8); cursor:pointer; font-size:22px; line-height:1; padding-bottom:2px; transition:transform .15s, box-shadow .15s, opacity .2s; }
+.cv-arrow:hover{ background:var(--sol-soft); }
+.cv-arrow:active{ transform:translateY(2px); box-shadow:0 1px 0 rgba(36,28,21,.8); }
+.cv-arrow[disabled]{ opacity:.32; pointer-events:none; }
 .cv-reel{
   display:flex; flex-direction:row; align-items:flex-start; gap:16px;
   overflow-x:auto; overflow-y:hidden;
@@ -1464,9 +1460,13 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
         </div>
 
         <div class="cv-reel-wrap">
-        <p class="reel-hint"><span class="es">Desliza para ver todo →</span><span class="en">Swipe to see it all →</span></p>
-        <button type="button" class="cv-arrow cv-arrow-prev" aria-label="Anterior">‹</button>
-        <button type="button" class="cv-arrow cv-arrow-next" aria-label="Siguiente">›</button>
+        <div class="cv-reel-head">
+          <p class="reel-hint"><span class="es">Desliza o usa las flechas →</span><span class="en">Swipe or use the arrows →</span></p>
+          <div class="cv-arrows">
+            <button type="button" class="cv-arrow cv-arrow-prev" aria-label="Anterior">‹</button>
+            <button type="button" class="cv-arrow cv-arrow-next" aria-label="Siguiente">›</button>
+          </div>
+        </div>
         <div class="cv-reel">
 
           <div class="cv-card">
