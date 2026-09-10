@@ -748,7 +748,7 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
 #pantone-tag .pt-mark{ display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:12px; }
 #pantone-tag .pt-name{ display:block; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:15px; margin-top:3px; }
 #pantone-tag .pt-num{ display:block; font-family:'Space Mono',monospace; font-size:8.5px; letter-spacing:.1em; opacity:.65; margin-top:2px; }
-@media(max-width:820px){ #pantone-tag{ left:12px; bottom:82px; width:104px; padding:44px 10px 10px; } #pantone-tag::before{ height:30px; } }
+@media(max-width:820px){ #pantone-tag{ left:12px; bottom:82px; width:104px; padding:44px 10px 10px; } #pantone-tag::before{ height:30px; } #pantone-tag.pt-tuck{ opacity:0; visibility:hidden; transform:translateX(-125%); pointer-events:none; } .page{ padding-bottom:94px; } }
 .index-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:8px; }
 @media(min-width:760px){ .index-grid{ grid-template-columns:repeat(5,1fr); } }
 .idx{ display:flex; flex-direction:column; border:2.5px solid var(--ink); border-radius:8px; overflow:hidden; background:var(--card); box-shadow:0 6px 0 rgba(36,28,21,.22); transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s; }
@@ -1560,10 +1560,13 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
 
   const PT = { sobre:{c:'#99B4AA',name:'Salvia',num:'MDZC 01·99'}, servicios:{c:'#ABA66F',name:'Oliva',num:'MDZC 02·A6'}, trabajo:{c:'#E1B8A2',name:'Melocotón',num:'MDZC 03·E1'}, cv:{c:'#6B6D43',name:'Musgo',num:'MDZC 04·6B'}, contacto:{c:'#D9A8B0',name:'Rosa',num:'MDZC 05·D9'} };
   const ptTag = document.getElementById('pantone-tag');
+  let ptHideTimer;
   function setSection(id){
     document.body.dataset.section = id;
     const m = PT[id];
-    if(m){ ptTag.style.setProperty('--pt', m.c); ptTag.querySelector('.pt-name').textContent = m.name; ptTag.querySelector('.pt-num').textContent = m.num; ptTag.classList.add('show'); }
+    if(m){ ptTag.style.setProperty('--pt', m.c); ptTag.querySelector('.pt-name').textContent = m.name; ptTag.querySelector('.pt-num').textContent = m.num; ptTag.classList.add('show'); ptTag.classList.remove('pt-tuck');
+      if(window.matchMedia('(max-width:820px)').matches){ clearTimeout(ptHideTimer); ptHideTimer = setTimeout(() => ptTag.classList.add('pt-tuck'), 2600); }
+    }
     else { ptTag.classList.remove('show'); }
   }
   /* ===== Dock móvil: barra con muesca curva + burbuja deslizante ===== */
@@ -1949,7 +1952,7 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
     document.getElementById('cb-x').addEventListener('click', closeBot);
     if(teaser){
       teaser.addEventListener('click', openBot);
-      setTimeout(() => { if(!greeted && !box.classList.contains('open')) teaser.classList.add('show'); }, 6500);
+      setTimeout(() => { if(!greeted && !box.classList.contains('open') && window.matchMedia('(min-width:821px)').matches) teaser.classList.add('show'); }, 6500);
       setTimeout(() => teaser.classList.remove('show'), 18000);
     }
     form.addEventListener('submit', e => { e.preventDefault(); const v = input.value.trim(); if(!v) return; add(v, 'me'); input.value = ''; answer(v); });
