@@ -46,6 +46,45 @@
   --line:rgba(36,28,21,0.14);
   --card:#FFFCF6;
 }
+
+/* ===== MODO NOCHE — cada pantalla su Pantone en versión profunda ===== */
+html[data-theme="dark"]{
+  --paper:#181410;
+  --card:#241f19;
+  --ink:#F2E9D8;
+  --line:rgba(242,233,216,0.16);
+  --sol-soft:#3b3220;
+  --melon-soft:#3d2622;
+  --ciruela-soft:#2f2338;
+  --granate-soft:#3a1420;
+}
+html[data-theme="dark"] body[data-section="home"]{ background:#181410; color:var(--ink); }
+html[data-theme="dark"] body[data-section="sobre"]{ background:#1a2521; color:var(--ink); }
+html[data-theme="dark"] body[data-section="servicios"]{ background:#25241a; color:var(--ink); }
+html[data-theme="dark"] body[data-section="trabajo"]{ background:#2c211b; color:var(--ink); }
+html[data-theme="dark"] body[data-section="cv"]{ background:#1d1e15; color:var(--ink); }
+html[data-theme="dark"] body[data-section="contacto"]{ background:#2a1c20; color:var(--ink); }
+html[data-theme="dark"] body[data-section="tarjeta"]{ background:#5c0a1e; color:var(--ink); }
+/* elementos que usan la tinta como FONDO oscuro: mantenerlos oscuros con texto claro */
+html[data-theme="dark"] #splash{ background:#0f0b08; }
+html[data-theme="dark"] .load-box{ color:#F2E9D8; }
+html[data-theme="dark"] #menu-overlay{ background:#0f0b08; }
+html[data-theme="dark"] #menu-overlay a{ color:#F2E9D8; }
+html[data-theme="dark"] .menu-switch{ border-color:#F2E9D8; color:#F2E9D8; }
+html[data-theme="dark"] .marquee{ background:#0f0b08; }
+html[data-theme="dark"] .marquee span{ color:#F2E9D8; }
+html[data-theme="dark"] .cv-box{ background:#0f0b08; }
+html[data-theme="dark"] .cv-box h2{ color:#F2E9D8; }
+html[data-theme="dark"] .hero-slogan{ color:#cfc4b2; }
+html[data-theme="dark"] #gate{ background:#181410; }
+html[data-theme="dark"] header.scrolled{ background:rgba(24,20,16,0.74); box-shadow:0 1px 0 rgba(242,233,216,0.12); }
+
+/* interruptor de tema */
+.theme-toggle{ width:44px; height:44px; border-radius:50%; border:2px solid var(--ink); background:var(--card); color:var(--ink); display:flex; align-items:center; justify-content:center; font-size:17px; cursor:pointer; transition:transform .2s, background .2s; flex:0 0 auto; }
+.theme-toggle:hover{ transform:rotate(-12deg); }
+.theme-toggle .th-light{ display:none; }
+html[data-theme="dark"] .theme-toggle .th-dark{ display:none; }
+html[data-theme="dark"] .theme-toggle .th-light{ display:inline; }
 *{box-sizing:border-box; margin:0; padding:0;}
 html{scroll-behavior:smooth;}
 body{
@@ -390,6 +429,10 @@ body[data-mode="cliente"] .hero-slogan .slg-cliente{ display:inline; }
 .contact-sec{ background-color:var(--melon-soft); }
 .contact-aud{ display:none; margin-bottom:30px; }
 body[data-mode="empleo"] .contact-aud-empleo{ display:block; }
+#contacto .sec-title .ct{ display:none; }
+#contacto .sec-title .ct-cli{ display:inline; }
+body[data-mode="empleo"] #contacto .sec-title .ct-cli{ display:none; }
+body[data-mode="empleo"] #contacto .sec-title .ct-emp{ display:inline; }
 .ca-lead{ font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(1.05rem,3vw,1.3rem); margin-bottom:14px; }
 .ca-actions{ display:flex; gap:14px; flex-wrap:wrap; }
 .contact-grid{ display:grid; grid-template-columns:1fr; gap:40px; }
@@ -885,6 +928,7 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
         <button data-set-lang="es" class="active">ES</button>
         <button data-set-lang="en">EN</button>
       </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema claro/oscuro"><span class="th-dark">☾</span><span class="th-light">☀</span></button>
       <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -1523,7 +1567,7 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
       <div style="padding:40px 24px;">
         <div class="folio"><span class="fleft"><span class="fnum">Nº 05</span> · <span class="es">Contacto</span><span class="en">Contact</span></span><span class="fright">MDZC · ’26</span></div>
         <div class="eyebrow"><span class="es">Contacto</span><span class="en">Contact</span></div>
-        <h2 class="sec-title"><span class="es">Hablemos de <span class="signature">tu proyecto.</span></span><span class="en">Let's talk about <span class="signature">your project.</span></span></h2>
+        <h2 class="sec-title"><span class="ct ct-cli"><span class="es">Hablemos de <span class="signature">tu proyecto.</span></span><span class="en">Let's talk about <span class="signature">your project.</span></span></span><span class="ct ct-emp"><span class="es">Hablemos de <span class="signature">sumarme a tu equipo.</span></span><span class="en">Let's talk about <span class="signature">joining your team.</span></span></span></h2>
 
         <div class="contact-aud contact-aud-empleo">
           <p class="ca-lead"><span class="es">¿Eres empresa o estudio buscando diseñadora? Conectemos.</span><span class="en">A company or studio hiring a designer? Let's connect.</span></p>
@@ -1735,6 +1779,21 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
   window.addEventListener('hashchange', () => showPage(location.hash));
   showPage(location.hash);
   window.addEventListener('load', () => { measureDock(); dockCx = -100; updateDock(lastDockId, false); });
+
+  /* ===== Tema claro / oscuro (modo noche) ===== */
+  (function(){
+    const root = document.documentElement, KEY = 'mdzc-theme';
+    let saved = null; try { saved = localStorage.getItem(KEY); } catch(e){}
+    if(saved === 'dark' || saved === 'light'){ root.setAttribute('data-theme', saved); }
+    else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ root.setAttribute('data-theme', 'dark'); }
+    const btn = document.getElementById('theme-toggle');
+    if(btn){ btn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem(KEY, next); } catch(e){}
+      const tc = document.querySelector('meta[name="theme-color"]'); if(tc) tc.setAttribute('content', next === 'dark' ? '#181410' : '#FBF3E4');
+    }); }
+  })();
 
   /* ===== Puerta de entrada: elegir público (empleo / cliente / todo) ===== */
   const gate = document.getElementById('gate');
