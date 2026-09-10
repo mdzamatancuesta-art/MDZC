@@ -431,6 +431,17 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 
 /* ============ CV — CINTA HORIZONTAL DE TARJETAS ============ */
 .reel-hint{ font-family:'Space Mono',monospace; font-size:11px; opacity:.72; margin:4px 0 0; letter-spacing:.02em; }
+.cv-reel-wrap{ position:relative; }
+.cv-arrow{ display:none; }
+@media (min-width:820px){
+  .cv-reel-wrap .reel-hint{ display:none; }
+  .cv-arrow{ display:flex; align-items:center; justify-content:center; position:absolute; top:132px; z-index:6; width:46px; height:46px; border-radius:50%; background:var(--card); color:var(--ink); border:2.5px solid var(--ink); box-shadow:0 5px 0 rgba(36,28,21,.8); cursor:pointer; font-size:26px; line-height:1; padding-bottom:3px; transition:transform .15s, box-shadow .15s, opacity .2s; }
+  .cv-arrow:hover{ background:var(--sol-soft); }
+  .cv-arrow:active{ transform:translateY(3px); box-shadow:0 1px 0 rgba(36,28,21,.8); }
+  .cv-arrow-prev{ left:-14px; }
+  .cv-arrow-next{ right:-14px; }
+  .cv-arrow[disabled]{ opacity:0; pointer-events:none; }
+}
 .cv-reel{
   display:flex; flex-direction:row; align-items:flex-start; gap:16px;
   overflow-x:auto; overflow-y:hidden;
@@ -1313,7 +1324,10 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
           <div class="cv-stat"><span class="cv-stat-num">2</span><span class="cv-stat-lbl es">idiomas</span><span class="cv-stat-lbl en">languages</span></div>
         </div>
 
+        <div class="cv-reel-wrap">
         <p class="reel-hint"><span class="es">Desliza para ver todo →</span><span class="en">Swipe to see it all →</span></p>
+        <button type="button" class="cv-arrow cv-arrow-prev" aria-label="Anterior">‹</button>
+        <button type="button" class="cv-arrow cv-arrow-next" aria-label="Siguiente">›</button>
         <div class="cv-reel">
 
           <div class="cv-card">
@@ -1394,6 +1408,7 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
             <div class="cv-award"><span class="ic">🎽</span><span class="t"><b>2022</b> · <span class="es">Semifinalista y mención especial — Concurso Nacional "Artistas en Camiseta"</span><span class="en">Semifinalist &amp; special mention — National "Artistas en Camiseta" contest</span><span class="ach-tag">✓ <span class="es">Desbloqueado</span><span class="en">Unlocked</span></span></span></div>
           </div>
 
+        </div>
         </div>
 
         <div class="cv-box">
@@ -1787,6 +1802,25 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
     reel.addEventListener('pointerup', end);
     reel.addEventListener('pointercancel', end);
   });
+
+  /* flechas del CV (escritorio) para deslizar la cinta tarjeta a tarjeta */
+  (function(){
+    const reel = document.querySelector('.cv-reel');
+    const prev = document.querySelector('.cv-arrow-prev');
+    const next = document.querySelector('.cv-arrow-next');
+    if(!reel || !prev || !next) return;
+    const step = () => { const c = reel.querySelector('.cv-card'); return c ? c.offsetWidth + 16 : 300; };
+    const sync = () => {
+      const max = reel.scrollWidth - reel.clientWidth - 8;
+      prev.disabled = reel.scrollLeft <= 8;
+      next.disabled = reel.scrollLeft >= max;
+    };
+    prev.addEventListener('click', () => reel.scrollBy({ left: -step(), behavior:'smooth' }));
+    next.addEventListener('click', () => reel.scrollBy({ left:  step(), behavior:'smooth' }));
+    reel.addEventListener('scroll', sync, { passive:true });
+    window.addEventListener('resize', sync);
+    sync();
+  })();
 
   /* easter egg videojuego: código Konami (o triple clic en el logo) -> monedas + 1UP */
   (function(){
