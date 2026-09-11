@@ -366,6 +366,17 @@ body[data-mode="cliente"] .hero-slogan .slg-cliente{ display:inline; }
 .filter-btn.active{ background:var(--ink); color:var(--paper); transform:rotate(0deg) scale(1.05); }
 .filter-btn:hover{ transform:scale(1.08); }
 
+.case{ background:var(--card); border:2.5px solid var(--ink); border-radius:22px; padding:26px 24px; margin:30px 0 34px; box-shadow:0 10px 0 -4px rgba(36,28,21,.18); }
+.case-tag{ display:inline-block; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; background:var(--granate); color:#fff; padding:3px 12px; border-radius:12px; }
+.case h3{ font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(1.3rem,3.6vw,1.9rem); margin:13px 0 3px; }
+.case-sub{ font-family:'Space Mono',monospace; font-size:12px; opacity:.7; }
+.case-grid{ display:grid; grid-template-columns:1fr; gap:18px; margin-top:20px; }
+@media(min-width:760px){ .case-grid{ grid-template-columns:repeat(3,1fr); } }
+.case-col h4{ font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--granate); margin-bottom:6px; }
+.case-col p{ font-size:13.5px; line-height:1.5; }
+.case-metrics{ display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; padding-top:18px; border-top:2px dashed var(--line); }
+.case-chip{ font-family:'Space Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.03em; background:var(--sol-soft); border:2px solid var(--ink); border-radius:13px; padding:3px 11px; }
+.case-cta{ margin-top:20px; }
 .grid-work{ display:grid; grid-template-columns:1fr; gap:30px 24px; }
 @media (min-width:680px){ .grid-work{ grid-template-columns:1fr 1fr; } }
 @media (min-width:1040px){ .grid-work{ grid-template-columns:1fr 1fr 1fr; } }
@@ -1297,6 +1308,30 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
         <span class="es">Cada trabajo es un sello de mi colección. Ábrelo y verás cómo ayudé a esa marca a verse — y vender — mejor. ¿El próximo es el tuyo?</span>
         <span class="en">Each project is a stamp in my collection. Open one to see how I helped that brand look — and sell — better. Yours could be next.</span>
       </p>
+
+      <article class="case">
+        <span class="case-tag"><span class="es">★ Caso destacado</span><span class="en">★ Featured case</span></span>
+        <h3>URBENTIA — <span class="es">Personal Shopper Inmobiliario</span><span class="en">Real-estate Personal Shopper</span></h3>
+        <p class="case-sub">Branding + Web · 2024</p>
+        <div class="case-grid">
+          <div class="case-col">
+            <h4>● <span class="es">El reto</span><span class="en">The brief</span></h4>
+            <p><span class="es">Un personal shopper inmobiliario que arrancaba necesitaba una identidad que transmitiera confianza y una web que convirtiera las visitas en consultas reales.</span><span class="en">A new real-estate personal shopper needed an identity that conveyed trust and a site that turned visits into real enquiries.</span></p>
+          </div>
+          <div class="case-col">
+            <h4>● <span class="es">La solución</span><span class="en">The solution</span></h4>
+            <p><span class="es">Identidad completa —logotipo, paleta y tipografía— y una landing clara: propuesta de valor arriba, servicios explicados y una llamada a la acción directa hacia el contacto.</span><span class="en">Full identity —logo, palette and type— plus a clear landing: value proposition on top, services explained, and a direct call to action toward contact.</span></p>
+          </div>
+          <div class="case-col">
+            <h4>● <span class="es">El resultado</span><span class="en">The outcome</span></h4>
+            <p><span class="es">Una marca coherente lista para captar clientes y una web con un mensaje nítido que guía al usuario, paso a paso, hasta pedir una cita.</span><span class="en">A coherent brand ready to win clients and a site with a sharp message that guides the user, step by step, to book a call.</span></p>
+          </div>
+        </div>
+        <div class="case-metrics">
+          <span class="case-chip">Logotipo</span><span class="case-chip"><span class="es">Paleta</span><span class="en">Palette</span></span><span class="case-chip"><span class="es">Tipografía</span><span class="en">Type</span></span><span class="case-chip">Landing</span><span class="case-chip"><span class="es">Contacto</span><span class="en">Contact</span></span>
+        </div>
+        <a href="#contacto" class="btn btn-fill case-cta"><span class="es">Quiero un proyecto así</span><span class="en">I want a project like this</span> →</a>
+      </article>
 
       <div class="filters">
         <button class="filter-btn active" data-filter="all"><span class="es">Todos</span><span class="en">All</span></button>
