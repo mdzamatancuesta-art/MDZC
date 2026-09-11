@@ -2171,9 +2171,26 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
       {k:['gato','gata','tinta','cat','miau','meow','ronron'], es:'Soy Tinta, la mascota de MDZC 🐾. Ronroneo si me acaricias… y te enseño el trabajo. Psst: prueba el código Konami 😼', en:'I’m Tinta, MDZC’s pet 🐾. I purr if you pet me… and I show you the work. Psst: try the Konami code 😼'},
       {k:['ayuda','help','puedes','qué sabes','que sabes','opciones'], es:'Puedo contarte de servicios, precios, trabajo, CV, bodas o contacto. ¿Por dónde empezamos?', en:'I can tell you about services, prices, work, CV, weddings or contact. Where do we start?'},
       {k:['hola','buenas','hey','hi','hello','saludos','holi'], es:'¡Miau! ¿Buscas servicios, precios, trabajo o contacto?', en:'Meow! Looking for services, prices, work or contact?'},
-      {k:['gracias','thanks','thank you','genial','perfecto'], es:'¡De nada! 🐾 Miau.', en:'You’re welcome! 🐾 Meow.'}
+      {k:['gracias','thanks','thank you','genial','perfecto'], es:'¡De nada! 🐾 Miau.', en:'You’re welcome! 🐾 Meow.'},
+      {k:['como estas','cómo estás','que tal','qué tal','how are you','como andas','how r u'], es:'¡Ronroneando al sol! 🐾 ¿Y tú? ¿Te enseño algo de María Dolores?', en:'Purring in the sun! 🐾 And you? Want me to show you María Dolores’ work?'},
+      {k:['chiste','broma','joke','hazme reir','haz reir','divierteme','funny'], es:'¿Por qué el diseñador acabó agotado? Tenía demasiadas capas 😹. ¿Vemos el trabajo?', en:'Why was the designer tired? Too many layers 😹. Want to see the work?', go:'#trabajo'},
+      {k:['eres real','eres un bot','bot','ia','inteligencia artificial','robot','humana','humano','are you real','are you a bot','ai'], es:'Soy una gata de píxeles 🐾, la mascota de la web. Para hablar con María Dolores de verdad, ve a Contacto.', en:'I’m a pixel cat 🐾, the site’s mascot. To talk to María Dolores for real, head to Contact.', go:'#contacto'},
+      {k:['edad','años','anos','cuantos años','age','how old'], es:'Tengo 9 vidas y ninguna edad 😼. ¿Te enseño el portfolio?', en:'I’ve got 9 lives and no age 😼. Want to see the portfolio?', go:'#trabajo'},
+      {k:['como te llamas','cómo te llamas','tu nombre','your name','quien eres tu','who are you'], es:'Me llamo Tinta 🐾, la gata de MDZC. ¿En qué te ayudo?', en:'I’m Tinta 🐾, MDZC’s cat. How can I help?'},
+      {k:['te quiero','guapa','guapo','bonita','linda','preciosa','eres mona','cute','love you','beautiful'], es:'Miau, qué majo/a 🐾. ¿Te enseño lo que sabe hacer María Dolores?', en:'Meow, how sweet 🐾. Want to see what María Dolores can do?', go:'#servicios'},
+      {k:['jugar','juego','play','game','konami','arcade'], es:'¡Me encanta jugar! Prueba el código Konami: ↑ ↑ ↓ ↓ ← → ← → B A 😼', en:'I love to play! Try the Konami code: ↑ ↑ ↓ ↓ ← → ← → B A 😼'},
+      {k:['comida','hambre','pizza','atun','atún','pez','comer','food','hungry','fish'], es:'Yo de atún, tú de buen diseño 😸. ¿Vemos Servicios?', en:'Me for tuna, you for good design 😸. See Services?', go:'#servicios'},
+      {k:['tiempo','clima','lluvia','calor','weather','rain'], es:'De meteorología, ni idea; de diseño, un montón 🐾. ¿Servicios?', en:'Weather? No clue. Design? Tons 🐾. Services?', go:'#servicios'},
+      {k:['adios','adiós','chao','chau','hasta luego','bye','goodbye','nos vemos'], es:'¡Miau, hasta pronto! 🐾 Vuelve cuando quieras.', en:'Meow, see you soon! 🐾 Come back anytime.'},
+      {k:['sentido de la vida','significado de la vida','meaning of life','sentido','filosof'], es:'42… y un buen diseño 🐾. ¿Vemos el trabajo?', en:'42… and good design 🐾. Want to see the work?', go:'#trabajo'},
+      {k:['te gusta','opinas','qué opinas','que opinas','recomiendas','crees'], es:'Como buena gata soy exigente 😼, y el trabajo de María Dolores me convence. Míralo tú.', en:'As a proper cat I’m picky 😼, and María Dolores’ work wins me over. See for yourself.', go:'#trabajo'}
     ];
-    const FB = {es:'Ay, de eso no sé mucho 🐾. Prueba con: servicios, precios, trabajo o contacto — o escríbele directamente.', en:'Hmm, I don’t know that one 🐾. Try: services, prices, work or contact — or message her directly.', go:'#contacto'};
+    const FB = [
+      {es:'Mmm, de eso este gato no sabe 🐾. Pero te cuento de servicios, precios, trabajo, CV o contacto.', en:'Hmm, this cat doesn’t know that one 🐾. But I can tell you about services, prices, work, CV or contact.'},
+      {es:'Miau… esa se me escapa 😼. Prueba: servicios, trabajo, precios o contacto.', en:'Meow… that one’s beyond me 😼. Try: services, work, prices or contact.'},
+      {es:'Soy más de siestas y diseño que de eso 🐾. ¿Te enseño el trabajo o los servicios?', en:'I’m more about naps and design than that 🐾. Want to see the work or the services?', go:'#servicios'},
+      {es:'Ni idea de eso… ¡pero María Dolores seguro que sí! Escríbele en Contacto.', en:'No idea about that… but María Dolores surely does! Drop her a line in Contact.', go:'#contacto'}
+    ];
     const QUICK = [
       {es:'Servicios', en:'Services', q:'servicios'},
       {es:'Ver trabajo', en:'See work', q:'trabajo'},
@@ -2192,8 +2209,18 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
       body.scrollTop = body.scrollHeight;
     }
     function answer(text){
-      const t = text.toLowerCase();
-      const e = KB.find(x => x.k.some(k => t.indexOf(k) !== -1)) || FB;
+      const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-̂̄-ͯ]/g,''); /* quita acentos, conserva la ñ */
+      const t = norm(text);
+      let best = null, bestScore = 0;
+      KB.forEach(x => {
+        let s = 0;
+        x.k.forEach(k => {
+          const kk = norm(k).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          if(new RegExp('(?:^|[^a-z0-9ñ])' + kk).test(t)) s++;   /* coincide al inicio de palabra */
+        });
+        if(s > bestScore){ bestScore = s; best = x; }
+      });
+      const e = best || FB[Math.floor(Math.random() * FB.length)];
       setTimeout(() => add(e[L()], 'bot', e.go), 340);
     }
     function renderQuick(){
