@@ -2169,6 +2169,47 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
       {k:['descuento','rebaja','barato','oferta','mas barato','más barato','discount','cheap'], es:'Los precios ya van ajustados 🐾; el final se cierra tras una consulta según el proyecto. ¿Ver Servicios?', en:'Prices are already fair 🐾; the final one is set after a chat, per project. See Services?', go:'#servicios'},
       {k:['estudios','formacion','formación','estudio','carrera','titulo','título','education','studied'], es:'Estudió Preimpresión, Diseño y Edición de Publicaciones, y Marketing y Publicidad — todo en el CV. ¿Vamos?', en:'She studied Prepress, Publication Design, and Marketing & Advertising — all in the CV. Shall we?', go:'#cv'},
       {k:['experiencia','donde ha trabajado','dónde ha trabajado','empresas','trayectoria','experience','worked'], es:'Ha trabajado en Alzará, Star1Rocket, C&CH y Labotec Games, entre otros — lo tienes en el CV.', en:'She’s worked at Alzará, Star1Rocket, C&CH and Labotec Games, among others — it’s in the CV.', go:'#cv'},
+      {k:['historia del diseño','historia diseño','bauhaus','tipografia','tipografía','helvetica','gutenberg','origen del diseño','design history','historia'], es:[
+        'La Bauhaus (1919) marcó el diseño moderno con su idea "la forma sigue a la función" 🐾.',
+        'El término "diseño gráfico" lo acuñó William A. Dwiggins en 1922 ✏️.',
+        'Gutenberg popularizó los tipos móviles hacia 1440: el origen de la tipografía 📖.',
+        'El estilo suizo de los años 50 trajo las retículas y la Helvetica (1957) 🔠.',
+        'Antes de los ordenadores, todo se componía a mano, letra a letra. ¡Paciencia de gato! 😼'
+      ], en:[
+        'The Bauhaus (1919) shaped modern design with "form follows function" 🐾.',
+        'The term "graphic design" was coined by William A. Dwiggins in 1922 ✏️.',
+        'Gutenberg popularised movable type around 1440: the origin of typography 📖.',
+        'The Swiss Style of the 1950s brought grids and Helvetica (1957) 🔠.',
+        'Before computers, everything was set by hand, letter by letter. Cat-level patience! 😼'
+      ]},
+      {k:['marketing','publicidad','publicitario','anuncio','anuncios','campaña','campana','advertising','vender mas','vender más','posicionamiento'], es:[
+        'Marketing no es vender más, es que te elijan: identidad + mensaje claro 🎯.',
+        'Una marca coherente se recuerda más — por eso el branding pesa tanto como el logo ✨.',
+        'El color decide en segundos: por eso la paleta no es un capricho 🎨.',
+        'En publicidad, menos elementos = más impacto. El espacio en blanco también comunica.',
+        'Si el usuario no lo entiende en 3 segundos, se va. Por eso las webs claras venden 🖱️.'
+      ], en:[
+        'Marketing isn’t selling more, it’s getting chosen: identity + a clear message 🎯.',
+        'A coherent brand is remembered more — branding matters as much as the logo ✨.',
+        'Colour decides in seconds: that’s why the palette is no whim 🎨.',
+        'In advertising, fewer elements = more impact. White space communicates too.',
+        'If users don’t get it in 3 seconds, they leave. Clear sites sell 🖱️.'
+      ], go:'#servicios'},
+      {k:['dato curioso','datos curiosos','curiosidad','curiosidades','sabias','sabías','curioso','fun fact','dato','sabes algo'], es:[
+        'Dato: el logo de FedEx esconde una flecha entre la E y la x 🏹.',
+        'Dato: el azul es el color más usado en logos del mundo (transmite confianza) 💙.',
+        'Dato: Comic Sans se creó para los bocadillos de un perro de software… y acabó por todas partes 🐶.',
+        'Dato: el símbolo & (ampersand) viene de unir las letras "et" (y, en latín) ✍️.',
+        'Dato: el "Pantone del año" existe desde 2000 — por eso esta web juega con Pantones 🎨.',
+        'Dato: el icono de "guardar" sigue siendo un disquete que casi nadie ha usado ya 💾.'
+      ], en:[
+        'Fact: the FedEx logo hides an arrow between the E and the x 🏹.',
+        'Fact: blue is the most-used colour in logos worldwide (it signals trust) 💙.',
+        'Fact: Comic Sans was made for a software dog’s speech bubbles… and ended up everywhere 🐶.',
+        'Fact: the & (ampersand) comes from joining the letters "et" (Latin for "and") ✍️.',
+        'Fact: the "Pantone Colour of the Year" has existed since 2000 — that’s why this site plays with Pantones 🎨.',
+        'Fact: the "save" icon is still a floppy disk almost nobody has used 💾.'
+      ]},
       {k:['logo','logotipo','marca','branding','identidad'], es:'Un logotipo va desde 80€ (negociable), y un pack de identidad completo desde 150€: incluye propuestas y rondas de revisión. ¿Ves Servicios?', en:'A logo starts at €80 (negotiable); a full identity pack from €150: concepts and revision rounds included. See Services?', go:'#servicios'},
       {k:['packaging','envase','vela','caja'], es:'Sí, hace packaging: envase primario y secundario, con archivos listos para producción (como la vela de Locandeli). ¿Ver Servicios?', en:'Yes, she does packaging: primary & secondary, production-ready files (like the Locandeli candle). See Services?', go:'#servicios'},
       {k:['web','página','pagina','website','wordpress'], es:'Diseña webs a medida, cuidadas y fáciles de mantener. Tienes ejemplos en el trabajo (Star1Rocket, restaurante…). ¿Los vemos?', en:'She designs custom, easy-to-maintain websites. There are examples in the work (Star1Rocket, a restaurant…). Want to see?', go:'#trabajo'},
@@ -2213,7 +2254,8 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
       {es:'Ver trabajo', en:'See work', q:'trabajo'},
       {es:'Precios', en:'Prices', q:'precio'},
       {es:'Contacto', en:'Contact', q:'contacto'},
-      {es:'¿Quién es?', en:'Who is she?', q:'quién'}
+      {es:'¿Quién es?', en:'Who is she?', q:'quién'},
+      {es:'Dato curioso', en:'Fun fact', q:'dato curioso'}
     ];
 
     function add(txt, who, go){
@@ -2239,7 +2281,9 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
         if(s > bestScore){ bestScore = s; best = x; }
       });
       const e = best || FB[Math.floor(Math.random() * FB.length)];
-      setTimeout(() => add(e[L()], 'bot', e.go), 340);
+      const raw = e[L()];
+      const msg = Array.isArray(raw) ? raw[Math.floor(Math.random() * raw.length)] : raw;
+      setTimeout(() => add(msg, 'bot', e.go), 340);
     }
     function renderQuick(){
       quick.innerHTML = '';
