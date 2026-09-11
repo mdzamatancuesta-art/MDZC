@@ -2241,13 +2241,37 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
       {k:['tiempo en','que tiempo','qué tiempo','clima','lluvia','llueve','calor','frio','frío','temperatura','grados','madrid','sol hace','nublado','pronostico','pronóstico','weather','rain','forecast','tiempo'], es:'De meteorología ni idea, soy gata de interior 🐾. Para el tiempo en Madrid mira por la ventana… y para diseño, ¡pregúntame! ¿Servicios?', en:'No clue about weather, I’m an indoor cat 🐾. For Madrid’s weather look out the window… for design, ask me! Services?', go:'#servicios'},
       {k:['adios','adiós','chao','chau','hasta luego','bye','goodbye','nos vemos'], es:'¡Miau, hasta pronto! 🐾 Vuelve cuando quieras.', en:'Meow, see you soon! 🐾 Come back anytime.'},
       {k:['sentido de la vida','significado de la vida','meaning of life','sentido','filosof'], es:'42… y un buen diseño 🐾. ¿Vemos el trabajo?', en:'42… and good design 🐾. Want to see the work?', go:'#trabajo'},
-      {k:['te gusta','opinas','qué opinas','que opinas','recomiendas','crees'], es:'Como buena gata soy exigente 😼, y el trabajo de María Dolores me convence. Míralo tú.', en:'As a proper cat I’m picky 😼, and María Dolores’ work wins me over. See for yourself.', go:'#trabajo'}
+      {k:['te gusta','opinas','qué opinas','que opinas','recomiendas','crees'], es:'Como buena gata soy exigente 😼, y el trabajo de María Dolores me convence. Míralo tú.', en:'As a proper cat I’m picky 😼, and María Dolores’ work wins me over. See for yourself.', go:'#trabajo'},
+      {k:['2+2','cuanto es','cuánto es','matematica','matemática','matematicas','suma','resta','multiplica','calcula','cuanto son'], es:[
+        'Soy gata, no calculadora 😹… pero 2+2=4. Lo demás, mejor con diseño. ¿Servicios?',
+        'Las mates no son lo mío (tengo 4 patas para contar) 🐾. ¿Te enseño el trabajo?'
+      ], en:['I’m a cat, not a calculator 😹… but 2+2=4. The rest, better with design. Services?','Maths isn’t my thing (I count on 4 paws) 🐾. Want to see the work?']},
+      {k:['por que el cielo','cielo azul','por que existo','universo','agujero negro','estamos aqui','estamos aquí','significado del universo','por que somos'], es:[
+        'Uf, preguntas de las gordas 🐾. Yo solo sé que un buen diseño ordena el caos. ¿Lo vemos?',
+        'El universo es enorme… casi como el portfolio de María Dolores 😼. ¿Le echamos un ojo?'
+      ], en:['Whoa, the big questions 🐾. All I know is good design tames chaos. Shall we see it?','The universe is huge… almost like María Dolores’ portfolio 😼. Take a look?'], go:'#trabajo'},
+      {k:['si pudieras','superpoder','superpoderes','poderes','volar','viajar en el tiempo','maquina del tiempo','máquina del tiempo','que harias','qué harías'], es:[
+        'Si pudiera volar, perseguiría punteros láser 😼. ¿Y tú qué buscas: servicios o trabajo?',
+        'Mi superpoder es dormir 20 horas 🐾… el de María Dolores, diseñar. ¿Ver Servicios?'
+      ], en:['If I could fly, I’d chase laser pointers 😼. And you — services or work?','My superpower is sleeping 20 hours 🐾… María Dolores’ is design. See Services?'], go:'#servicios'},
+      {k:['unicornio','extraterrestre','alien','ovni','fantasma','magia','dragon','dragón','monstruo','duende'], es:[
+        'De criaturas mágicas no sé, pero de logos con magia… 🐾 ¿Ver el trabajo?',
+        'El único bicho raro aquí soy yo, una gata de píxeles 😼. ¿Te enseño el portfolio?'
+      ], en:['I don’t know magical creatures, but magical logos… 🐾 See the work?','The only odd creature here is me, a pixel cat 😼. Want the portfolio?'], go:'#trabajo'},
+      {k:['perro','perros','raton','ratón','ratones','ladrar','ladras','otros animales'], es:'¿Perros? 🙀 Prefiero hablar de diseño. ¿Servicios o trabajo?', en:'Dogs? 🙀 I’d rather talk design. Services or work?', go:'#servicios'}
     ];
     const FB = [
       {es:'Mmm, de eso este gato no sabe 🐾. Pero te cuento de servicios, precios, trabajo, CV o contacto.', en:'Hmm, this cat doesn’t know that one 🐾. But I can tell you about services, prices, work, CV or contact.'},
       {es:'Miau… esa se me escapa 😼. Prueba: servicios, trabajo, precios o contacto.', en:'Meow… that one’s beyond me 😼. Try: services, work, prices or contact.'},
       {es:'Soy más de siestas y diseño que de eso 🐾. ¿Te enseño el trabajo o los servicios?', en:'I’m more about naps and design than that 🐾. Want to see the work or the services?', go:'#servicios'},
       {es:'Ni idea de eso… ¡pero María Dolores seguro que sí! Escríbele en Contacto.', en:'No idea about that… but María Dolores surely does! Drop her a line in Contact.', go:'#contacto'}
+    ];
+    /* comodín para PREGUNTAS raras/ilógicas que no encajan en ningún tema */
+    const QFB = [
+      {es:'Uf, esa es de las raras 🐾. Filosóficamente… miau. En lo práctico: ¿servicios, trabajo o precios?', en:'Whew, that’s a weird one 🐾. Philosophically… meow. Practically: services, work or prices?'},
+      {es:'Menuda pregunta 😹. Como gata, mi respuesta es un ronroneo. ¿Te llevo al trabajo de María Dolores?', en:'What a question 😹. As a cat, my answer is a purr. Shall I take you to María Dolores’ work?', go:'#trabajo'},
+      {es:'Esa se sale de mi caja de arena 🐾. Pero de diseño te cuento lo que quieras: servicios, precios o CV.', en:'That’s beyond my litter box 🐾. But about design, ask away: services, prices or CV.'},
+      {es:'Ni con mis 9 vidas sé eso 😼. ¿Probamos con algo de diseño? Servicios, trabajo o contacto.', en:'Not even with my 9 lives 😼. Shall we try something design-y? Services, work or contact.'}
     ];
     const QUICK = [
       {es:'Servicios', en:'Services', q:'servicios'},
@@ -2280,7 +2304,12 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
         });
         if(s > bestScore){ bestScore = s; best = x; }
       });
-      const e = best || FB[Math.floor(Math.random() * FB.length)];
+      let e = best;
+      if(!e){
+        const isQ = /[?¿]/.test(text) || /(^|[^a-z])(por que|para que|que es|como|cuando|cuanto|cual|quien|donde|puedes|sabes|crees|existe|existen|tiene sentido|sentido|si pudieras)([^a-z]|$)/.test(t);
+        const bank = isQ ? QFB : FB;
+        e = bank[Math.floor(Math.random() * bank.length)];
+      }
       const raw = e[L()];
       const msg = Array.isArray(raw) ? raw[Math.floor(Math.random() * raw.length)] : raw;
       setTimeout(() => add(msg, 'bot', e.go), 340);
