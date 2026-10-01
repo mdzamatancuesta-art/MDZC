@@ -667,8 +667,8 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
 
 /* ============ TRABAJO — HOJA DE SELLOS ============ */
 #workGrid.stamps{
-  display:grid; grid-template-columns:repeat(2,1fr); gap:26px 20px;
-  margin-top:12px; padding:24px 18px;
+  display:grid; grid-template-columns:repeat(2,1fr); gap:46px 34px;
+  margin-top:12px; padding:30px 22px;
   background:
     radial-gradient(rgba(36,28,21,0.05) 1.3px, transparent 1.4px) 0 0/18px 18px,
     var(--card);
@@ -697,10 +697,10 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
     radial-gradient(var(--r) at 100% 50%,#0000 97%,#000) calc(var(--s)/2) 0/100% var(--s);
   mask-composite:intersect;
 }
-#workGrid.stamps .card:nth-child(4n+1){ transform:rotate(-2deg); }
-#workGrid.stamps .card:nth-child(4n+2){ transform:rotate(1.6deg); }
-#workGrid.stamps .card:nth-child(4n+3){ transform:rotate(-1deg); }
-#workGrid.stamps .card:nth-child(4n){ transform:rotate(2.2deg); }
+#workGrid.stamps .card:nth-child(4n+1){ transform:rotate(-1.3deg); }
+#workGrid.stamps .card:nth-child(4n+2){ transform:rotate(1.1deg); }
+#workGrid.stamps .card:nth-child(4n+3){ transform:rotate(-0.7deg); }
+#workGrid.stamps .card:nth-child(4n){ transform:rotate(1.4deg); }
 #workGrid.stamps .card:hover, #workGrid.stamps .card:focus-visible{ transform:rotate(0deg) translateY(-14px) scale(1.09); filter:drop-shadow(0 22px 22px rgba(36,28,21,.38)); z-index:5; }
 #workGrid.stamps .card > .tape, #workGrid.stamps .card > .badge-icon, #workGrid.stamps .card > p{ display:none !important; }
 .card .pm-extra{ display:none; }
