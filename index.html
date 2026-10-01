@@ -710,6 +710,9 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--ciruela); outline
   filter:saturate(1.06); background:var(--sol-soft);
 }
 @media(max-width:619px){ #workGrid.stamps .card > .card-img{ height:150px; } }
+/* sello sin foto: cara de marca discreta en vez de hueco (usa ::after; ::before lleva el "Nº") */
+#workGrid.stamps .card:not(:has(.card-img))::after{ content:"MDZC ✦"; order:-1; position:static; display:flex; align-items:center; justify-content:center; width:100%; height:190px; border-radius:2px; background:var(--sol-soft); font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:1.3rem; letter-spacing:.02em; color:var(--ink); opacity:.3; }
+@media(max-width:619px){ #workGrid.stamps .card:not(:has(.card-img))::after{ height:150px; } }
 #workGrid.stamps .card .yr{
   position:absolute; top:15px; left:15px; right:auto; bottom:auto; z-index:2; margin:0; width:auto;
   font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:.72rem;
@@ -1362,7 +1365,6 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
           <span class="cat">Escenografía</span>
           <h3>Stands feriales — Caser Seguros</h3>
           <p class="es">Prácticas en el dpto. de marketing (agentes y corredores): cartelería para eventos, folletos y elementos de stand para feria del sector asegurador.</p><p class="en">Internship in the marketing dept. (agents & brokers): event posters, brochures and trade-fair stand elements for an insurance-sector fair.</p>
-          <img class="card-img" src="https://images.pexels.com/photos/35138560/pexels-photo-35138560.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Stand ferial — imagen de banco" loading="lazy">
         </div>
 
         <div class="card" data-cat="escenografia">
@@ -1371,7 +1373,6 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
           <span class="cat">Escenografía</span>
           <h3>Gráfica corporativa — Alzará</h3>
           <p class="es">Producción de material para stands de ferias internacionales y montaje de la gráfica en el espacio, de la idea al día de instalación.</p><p class="en">Production of materials for international trade-fair stands and on-site graphic installation, from idea to install day.</p>
-          <img class="card-img" src="https://images.pexels.com/photos/37503303/pexels-photo-37503303.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Exposición — imagen de banco" loading="lazy">
         </div>
 
         <div class="card" data-cat="branding">
@@ -1398,7 +1399,6 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
           <span class="cat">Branding</span>
           <h3>Personajes — Labotec Games</h3>
           <p class="es">Diseño de personajes, interfaces e ilustraciones para tres videojuegos (Abyss Rising, Crazy Mixture y un tercer título en desarrollo), con apoyo al departamento de marketing.</p><p class="en">Character, UI and illustration design for three video games (Abyss Rising, Crazy Mixture and a third title in development), plus marketing department support.</p>
-          <img class="card-img" src="https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Ilustración digital — imagen de banco" loading="lazy">
         </div>
 
         <div class="card" data-cat="editorial">
@@ -1407,7 +1407,6 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
           <span class="cat">Editorial</span>
           <h3>Maquetación — Grupo Editorial Edelsa</h3>
           <p class="es">Maquetación y diseño de portadas de libros didácticos, con control de retículas, tipografía y corrección de textos.</p><p class="en">Layout and cover design for educational books, with grid control, typography and text proofreading.</p>
-          <img class="card-img" src="https://images.pexels.com/photos/30405422/pexels-photo-30405422.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Maquetación editorial — imagen de banco" loading="lazy">
         </div>
 
         <div class="card" data-cat="editorial">
@@ -1443,7 +1442,6 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
           <span class="cat">Web</span>
           <h3>Diseño web — Star1Rocket</h3>
           <p class="es">Diseño y mantenimiento web para el grupo empresarial, con apoyo al departamento de atención al cliente.</p><p class="en">Web design and maintenance for the business group, supporting the customer service department.</p>
-          <img class="card-img" src="https://images.pexels.com/photos/18096281/pexels-photo-18096281.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Web en pantalla — imagen de banco" loading="lazy">
         </div>
 
         <div class="card" data-cat="redes">
@@ -1452,7 +1450,6 @@ body:not([data-section="home"]) .logo-mark{ background:rgba(251,243,228,.92); bo
           <span class="cat es">Redes</span><span class="cat en">Social</span>
           <h3>Redes sociales — Telepizza y locales</h3>
           <p class="es">Diseño y publicación de contenido para Instagram como freelance: @telepizza.trescantos, @telepizza.algete, @tastemerestaurante, @dingolounge.</p><p class="en">Freelance Instagram content design and publishing: @telepizza.trescantos, @telepizza.algete, @tastemerestaurante, @dingolounge.</p>
-          <img class="card-img" src="https://images.pexels.com/photos/4771470/pexels-photo-4771470.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Contenido para redes — imagen de banco" loading="lazy">
         </div>
 
         <div class="card" data-cat="envases">
